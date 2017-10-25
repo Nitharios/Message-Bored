@@ -10,11 +10,12 @@ angular.module('boredApp')
     $http.get(url)
     .then(function(usersList) {
       self.users = usersList.data;
+      console.log(self.users);
     });
 
     // read methods
-    this.getUsers = function() { return users; };
-    this.getUser = function(username) { return users; };
+    this.getUsers = function() { return self.users; };
+    this.getUser = function(username) { return self.users; };
 
     // create user
     this.createUser = function(details) {

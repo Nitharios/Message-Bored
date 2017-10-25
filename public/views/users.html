@@ -1,12 +1,10 @@
-<div>
-  <h1>USERS</h1>
-  <h1>TEST</h1>
-  
-  <li ng-repeat="user in usersList">
-    <h4>{{ user.username }}</h4>
+<div>  
+  <li ng-repeat="user in UsersService.users">
+    {{ user.username }}
   </li>
 </div>
 
+<h2>Create New User</h2>
 <form>
   <input type="text" ng-model="newUser.username" placeholder="Enter Username">
   <button ng-click="createUser()">Create Username</button>

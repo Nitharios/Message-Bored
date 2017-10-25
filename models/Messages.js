@@ -10,8 +10,18 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   Message.associate = function(models) {
-    Message.belongsTo(models.user, { foreignKey : "author_id" });
-    Message.belongsTo(models.topic, { foreignKey : "topic_id" });
+    Message.belongsTo(models.user, { 
+      foreignKey : "author_id", 
+      allowNull : false
+    }, {
+      onDelete : "NO ACTION" 
+    });
+    Message.belongsTo(models.topic, { 
+      foreignKey : "topic_id", 
+      allowNull : false
+    }, {
+      onDelete : "NO ACTION" 
+    });
   };
 
   return Message;

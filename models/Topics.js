@@ -11,7 +11,13 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   Topic.associate = function(models) {
-    Topic.belongsTo(models.user, { foreignKey : "created_by" });
+    Topic.belongsTo(models.user, { 
+      foreignKey : "created_by",
+      allowNull : false
+    }, {
+      onDelete : "NO ACTION"
+    }
+    );
   };
 
   return Topic;

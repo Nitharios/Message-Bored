@@ -17,12 +17,13 @@ angular.module('boredApp')
     this.getUser = function(username) { return users; };
 
     // create user
-    this.createUser = function(username) {
-      if (!username) { return; }
-    
+    this.createUser = function(details) {
+      if (!details) { return; }
+
       // create on frontend
-      var newUser = { username : username };
+      var newUser = { username : details.username };
       self.users.push(newUser);
+      console.log(self.users);
 
       // create on backend
       $http.post(url, newUser)

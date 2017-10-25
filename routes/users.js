@@ -14,6 +14,7 @@ router.route('/')
   });
 })
 .post((req, res) => {
+  let username = req.body.username;
   User.create({ username : username })
   .then(response => {
     console.log('create and respond with new user', response);

@@ -6,6 +6,9 @@ angular.module('boredApp')
     // collection of users
     this.users = [];
 
+    // single user
+    this.user = {};
+
     // initialization
     $http.get(url)
     .then(function(usersList) {
@@ -14,7 +17,6 @@ angular.module('boredApp')
 
     // read methods
     this.getUsers = function() { return self.users; };
-    this.getUser = function(username) { return self.users; };
 
     // create user
     this.createUser = function(details) {
@@ -37,5 +39,15 @@ angular.module('boredApp')
       .then(function(response) {
         console.log('New User created', response);
       });
+    };
+
+    // get user information
+    this.getUserByUsername = function(username) { 
+      var userData = self.users.find(function(element) {
+        return element.username === username;
+      });
+
+      // userData contains full object of info from db
+      self.user = userData.username; 
     };
 }]);

@@ -21,6 +21,7 @@ router.route('/')
     return res.json(response);
   })
   .catch(err => {
+    // could use something to log this error
     return console.log(err);
   });
 });

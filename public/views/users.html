@@ -2,7 +2,7 @@
 
 <div>  
   <li ng-repeat="user in UsersService.users">
-    {{ user.username }}
+    <a ng-href="/users/{{ user.username }}">{{ user.username }}</a>
   </li>
 </div>
 

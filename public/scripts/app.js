@@ -13,6 +13,11 @@ var boredApp = angular.module('boredApp')
     templateUrl : '/views/users.html',
     controller : 'UsersController'
   })
+  .when('/users/:username',
+  {
+    templateUrl : '/views/user.html',
+    controller : 'SingleUserController'
+  })
   .otherwise(
   {
     template : '<h1><center>SUCK IT TREBEK</center></h1>'

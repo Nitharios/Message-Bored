@@ -10,6 +10,7 @@ const app = express();
 
 app.use(bodyParser.urlencoded({ extended : true }));
 app.use(bodyParser.json());
+// serving up files from public on /
 app.use(express.static('public'));
 
 /* ROUTES */

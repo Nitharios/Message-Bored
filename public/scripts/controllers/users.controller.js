@@ -1,11 +1,11 @@
 angular.module('boredApp')
 .controller('UsersController', ['$scope', 'UsersService', function($scope, UsersService) {
 
-  $scope.usersList = [];
+  $scope.UsersService = UsersService;
+  $scope.newUser = { name : '' };
 
-  UsersService.getUsers()
-  .then(function(usersList) {
-    // controller recieves an array from users.services
-    $scope.usersList = usersList;
-  });
+  $scope.createUser = function(e) {
+    UsersService.createUser($scope.newUser);
+    $scope.newUser.name = '';
+  };
 }]);

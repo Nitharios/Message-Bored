@@ -4,20 +4,33 @@ module.exports = function(sequelize, DataTypes) {
     name : { 
       type: DataTypes.STRING,
       unique : true,
-      notNull : true
+      allowNull : false
     }
   }, {
     tableName : 'topics'
+  }, {
+    indexes : [
+      {
+        name : 'topics_pkey',
+        unique : true,
+        fields : ['id']
+      },
+      {
+        name : 'topics_name_key',
+        unique : true,
+        fields : ['name']
+      }
+    ]
   });
 
   Topic.associate = function(models) {
     Topic.belongsTo(models.user, { 
-      foreignKey : "created_by",
-      allowNull : false
-    }, {
+      foreignKey : {
+        name : "created_by",
+        allowNull : false
+      },
       onDelete : "NO ACTION"
-    }
-    );
+    });
   };
 
   return Topic;

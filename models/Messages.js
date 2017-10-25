@@ -3,23 +3,33 @@ module.exports = function(sequelize, DataTypes) {
   const Message = sequelize.define('message', {
     body : { 
       type: DataTypes.TEXT,
-      notNull : true
+      allowNull : false
     }
   }, {
     tableName : 'messages'
+  }, {
+    indexes : [
+      {
+        name : 'messages_pkey',
+        unique : true,
+        fields : ['id']
+      }
+    ]
   });
 
   Message.associate = function(models) {
     Message.belongsTo(models.user, { 
-      foreignKey : "author_id", 
-      allowNull : false
-    }, {
+      foreignKey : {
+        name : "author_id",
+        allowNull : false
+      },
       onDelete : "NO ACTION" 
     });
     Message.belongsTo(models.topic, { 
-      foreignKey : "topic_id", 
-      allowNull : false
-    }, {
+      foreignKey : {
+        name : "topic_id",
+        allowNull : false
+      },  
       onDelete : "NO ACTION" 
     });
   };

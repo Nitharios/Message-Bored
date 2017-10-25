@@ -4,10 +4,18 @@ module.exports = function(sequelize, DataTypes) {
     name : { 
       type: DataTypes.STRING,
       unique : true,
-      notNull : true
+      allowNull : false
     }
   }, {
     tableName : 'users'
+  }, {
+    indexes : [
+      {
+        name : 'users_pkey',
+        unique : true,
+        fields : ['id']
+      }
+    ]
   });
 
   // User.associate = function(models) {

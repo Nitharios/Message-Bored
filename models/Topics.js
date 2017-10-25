@@ -1,7 +1,7 @@
 /* jshint esversion:6 */
 module.exports = function(sequelize, DataTypes) {
   const Topic = sequelize.define('topic', {
-    name : { 
+    title : { 
       type: DataTypes.STRING,
       unique : true,
       allowNull : false
@@ -16,9 +16,9 @@ module.exports = function(sequelize, DataTypes) {
         fields : ['id']
       },
       {
-        name : 'topics_name_key',
+        name : 'topics_title_key',
         unique : true,
-        fields : ['name']
+        fields : ['title']
       }
     ]
   });

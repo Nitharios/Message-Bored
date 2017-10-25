@@ -10,7 +10,6 @@ angular.module('boredApp')
     $http.get(url)
     .then(function(usersList) {
       self.users = usersList.data;
-      console.log(self.users);
     });
 
     // read methods
@@ -21,10 +20,17 @@ angular.module('boredApp')
     this.createUser = function(details) {
       if (!details) { return; }
 
-      // create on frontend
       var newUser = { username : details.username };
+
+      // check if username already exists
+      var userExists = self.users.some(function(element) {
+        return element.username === newUser.username;
+      });
+
+      if (userExists) return userExists; 
+
+      // create on frontend if user does not exist
       self.users.push(newUser);
-      console.log(self.users);
 
       // create on backend
       $http.post(url, newUser)

@@ -4,7 +4,7 @@ angular.module('boredApp')
   $scope.UsersService = UsersService;
   $scope.newUser = { username : '' };
 
-  $scope.createUser = function(e) {
+  $scope.createUser = function() {
     UsersService.createUser($scope.newUser);
     $scope.newUser.username = '';
   };

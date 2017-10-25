@@ -26,8 +26,10 @@ router.route('/')
   });
 });
 
-router.route('/:id')
+router.route('/:username')
 .get((req, res) => {
+  const username = req.params.username;
+  console.log('slednfsdlenf', username);
   res.json('user profile and user messages');
 });
 

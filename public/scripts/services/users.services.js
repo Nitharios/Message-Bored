@@ -9,10 +9,17 @@ angular.module('boredApp')
     // single user
     this.user = {};
 
-    // initialization
+    // initialization of usersList
     $http.get(url)
     .then(function(usersList) {
       self.users = usersList.data;
+    });
+
+    // initialization of user
+    $http.get(url + '/' + self.user)
+    .then(function(userData) {
+      console.log(userData);
+      self.user = userData.data;
     });
 
     // read methods

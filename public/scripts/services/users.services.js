@@ -21,14 +21,13 @@ angular.module('boredApp')
       if (!username) { return; }
     
       // create on frontend
-      var newUser = { name : username };
-    
+      var newUser = { username : username };
       self.users.push(newUser);
 
       // create on backend
-      $http.post(url, user)
+      $http.post(url, newUser)
       .then(function(response) {
-        console.log('New User created');
+        console.log('New User created', response);
       });
     };
 }]);

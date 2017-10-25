@@ -5,6 +5,9 @@ var boredApp = angular.module('boredApp')
 .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 
   $routeProvider
+  .when('/', {
+    templateUrl : '/views/home.html'
+  })
   .when('/users', 
   {
     templateUrl : '/views/users.html',

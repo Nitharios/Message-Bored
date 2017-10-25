@@ -5,7 +5,6 @@ angular.module('boredApp')
       getUsers : function () {
         return $http.get('/api/users')
         .then(function(usersList) {
-          console.log('xcmkvckvmx,ckvckvv', usersList.data);
           // returns an array
           return usersList.data;
         });

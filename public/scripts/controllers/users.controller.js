@@ -5,7 +5,7 @@ angular.module('boredApp')
 
   UsersService.getUsers()
   .then(function(usersList) {
-    console.log('siwjurwijurqojurowjur', usersList);
+    // controller recieves an array from users.services
     $scope.usersList = usersList;
   });
 }]);

@@ -10,10 +10,10 @@ module.exports = function(sequelize, DataTypes) {
     tableName : 'users'
   });
 
-  User.associate = function(models) {
-    User.hasMany(models.topic);
-    User.hasMany(models.message);
-  };
+  // User.associate = function(models) {
+  //   User.hasMany(models.topic);
+  //   User.hasMany(models.message);
+  // };
 
   return User;
 };

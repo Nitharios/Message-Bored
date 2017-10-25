@@ -11,8 +11,7 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   Topic.associate = function(models) {
-    Topic.belongsTo(models.user);
-    Topic.hasMany(models.message);
+    Topic.belongsTo(models.user, { foreignKey : "created_by" });
   };
 
   return Topic;

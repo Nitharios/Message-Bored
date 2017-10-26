@@ -52,4 +52,14 @@ angular.module('boredApp')
       //   return self.topic;
       // });
     };
+
+    // update topic title
+    this.updateTopicById = function(id, updatedTitle) {
+      return $http.put(url + '/' + id, {
+        title : updatedTitle
+      })
+      .then(function(updatedTopicData) {
+        return updatedTopicData.data;
+      });
+    };
 }]);

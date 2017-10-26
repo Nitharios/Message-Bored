@@ -33,17 +33,22 @@ router.route('/:id')
 .get((req, res) => {
   const id = req.params.id;
 
-  return Topic.findOne(
-  { where : { id : id } },
-  { raw : true })
+  return Topic.findById(id, { raw : true })
   .then(topicInfo => {
-    return res.json(topicInfo.dataValues);
+    console.log(topicInfo);
+    return res.json(topicInfo);
   });
 })
 .put((req, res) => {
-  const topicId = req.params.topicId;
+  const id = req.params.id;
 
-  return; 
+  return Topic.update(
+    { title : req.body.title },
+    { where : { id : id } 
+  })
+  .then(response => {
+    return res.json(response);
+  });
 });
 
 module.exports = router;

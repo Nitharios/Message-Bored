@@ -6,9 +6,6 @@ angular.module('boredApp')
     // collection of users
     this.users = [];
 
-    // single user
-    this.user = {};
-
     // initialization of usersList
     $http.get(url)
     .then(function(usersList) {
@@ -44,9 +41,9 @@ angular.module('boredApp')
     // get user information
     // should first check if user exists
     this.getUserByUsername = function(username) { 
-      $http.get(url + '/' + username)
+      return $http.get(url + '/' + username)
       .then(function(userData) {
-        self.user = userData.data;
+        return userData.data;
       });
     };
 }]);

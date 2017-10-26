@@ -6,9 +6,6 @@ angular.module('boredApp')
     // collection of topics
     this.topics = [];
 
-    // single topic
-    this.topic = {};
-
     // initialization of topicsList
     $http.get(url)
     .then(function(topicsList) {
@@ -47,9 +44,12 @@ angular.module('boredApp')
     // get topic information
     // should first check if topic exists
     this.getTopicById = function(id) { 
-      $http.get(url + '/' + id)
+      return $http.get(url + '/' + id)
       .then(function(topicData) {
-        self.topic = topicData.data;
+        return topicData.data;
       });
+      // .then(function () {
+      //   return self.topic;
+      // });
     };
 }]);

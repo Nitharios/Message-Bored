@@ -50,7 +50,7 @@ router.route('/by-topic/:id')
       { model : User },
       { model : Topic }
     ],
-    where : { author_id : id },
+    where : { topic_id : id },
     order : [[ 'createdAt', 'ASC' ]]
   })
   .then(messagesList => {

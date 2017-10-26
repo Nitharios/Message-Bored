@@ -1,7 +1,7 @@
 angular.module('boredApp')
 .service('MessagesService', ['$http', function($http) {
     var latestMessages = '/api/messages/latest';
-    var newMessage = '/api/messages';
+    var postNew = '/api/messages';
     var messagesByTopic = '/api/messages/by-topic';
     var self = this;
     // collection of messages
@@ -35,7 +35,7 @@ angular.module('boredApp')
       // create on frontend
       self.messages.push(newMessage);
       // create on backend
-      $http.post(url, newMessage)
+      $http.post(postNew, newMessage)
       .then(function(response) {
         return;
       });

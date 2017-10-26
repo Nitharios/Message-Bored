@@ -15,21 +15,14 @@ angular.module('boredApp')
       self.users = usersList.data;
     });
 
-    // initialization of user
-    $http.get(url + '/' + self.user)
-    .then(function(userData) {
-      console.log(userData);
-      self.user = userData.data;
-    });
-
     // read methods
     this.getUsers = function() { return self.users; };
 
     // create user
-    this.createUser = function(details) {
-      if (!details) { return; }
+    this.createUser = function(username) {
+      if (!username) { return; }
 
-      var newUser = { username : details.username };
+      var newUser = { username : username };
 
       // check if username already exists
       var userExists = self.users.some(function(element) {
@@ -44,17 +37,16 @@ angular.module('boredApp')
       // create on backend
       $http.post(url, newUser)
       .then(function(response) {
-        console.log('New User created', response);
+        return;
       });
     };
 
     // get user information
+    // should first check if user exists
     this.getUserByUsername = function(username) { 
-      var userData = self.users.find(function(element) {
-        return element.username === username;
+      $http.get(url + '/' + username)
+      .then(function(userData) {
+        self.user = userData.data;
       });
-
-      // userData contains full object of info from db
-      self.user = userData.username; 
     };
 }]);

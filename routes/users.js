@@ -18,6 +18,7 @@ router.route('/')
 
   User.create({ username : username })
   .then(response => {
+    console.log(`New user ${username} created`);
     return res.json(response);
   })
   .catch(err => {
@@ -29,8 +30,14 @@ router.route('/')
 router.route('/:username')
 .get((req, res) => {
   const username = req.params.username;
-  console.log('slednfsdlenf', username);
-  res.json('user profile and user messages');
+
+  return User.findOne(
+    { where : { username : username } }, 
+    { raw : true })
+  .then(userInfo => {
+    // console.log('user profile and user messages');
+    return res.json(userInfo.dataValues);
+  });
 });
 
 module.exports = router;

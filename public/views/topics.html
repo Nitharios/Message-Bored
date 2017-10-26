@@ -1,0 +1,15 @@
+<h1>List of Topics</h1>
+
+<div>  
+  <li ng-repeat="topic in TopicsService.topics">
+    <a ng-href="/topics/{{ topic.id }}">{{ topic.title }}</a>
+    by: <a ng-href="users/{{ topic.created_by }}">{{ topic.created_by }} </a>
+  </li>
+</div>
+
+<h2>Create New Topic</h2>
+<form>
+  <!-- need to add user_id to created_by -->
+  <input type="text" ng-model="newTopic.title" placeholder="Enter Title"> by: <input type="text" ng-model="newTopic.created_by" disabled>
+  <button ng-click="createTopic()">Create Title</button>
+</form>

@@ -9,16 +9,14 @@ const router = express.Router();
 
 router.route('/latest')
 .get((req, res) => {
-  return Message.findAll(
-  { include : [
-    { model : User },
-    { model : Topic }
-  ]},
-  { order : [
-    [ 'createdAt', 'DESC' ]
-  ]},
-  { limit : 10 }
-  )
+  return Message.findAll({
+    include : [
+      { model : User },
+      { model : Topic }
+    ],
+    order : [[ 'createdAt', 'DESC' ]],
+    limit : 10
+  })
   .then(messagesList => {
     return res.json(messagesList);
   });

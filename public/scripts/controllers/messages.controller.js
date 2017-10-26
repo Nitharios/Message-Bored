@@ -11,4 +11,7 @@ angular.module('boredApp')
     author_id : 1,
     topic_id : $routeParams.id
   };
+
+  $scope.MessagesService = MessagesService;
+  $scope.TopicsService = TopicsService;
 }]);

@@ -1,12 +1,13 @@
 angular.module('boredApp')
 .service('MessagesService', ['$http', function($http) {
-    var url = '/api/messages';
+    var url = '/api/messages/latest';
     var self = this;
     // collection of messages
     this.messages = [];
     // initialization of messagesList
     $http.get(url)
     .then(function(messagesList) {
+      console.log(messagesList);
       self.messages = messagesList.data;
     });
     // read methods

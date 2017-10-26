@@ -1,1 +1,7 @@
 <h1>Hello from Messages!</h1>
+
+<div>  
+  <li ng-repeat="message in MessagesService.messages">
+    {{ message.body }}
+  </li>
+</div>

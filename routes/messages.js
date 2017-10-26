@@ -5,7 +5,7 @@ const Message = db.message;
 
 const router = express.Router();
 
-router.route('/')
+router.route('/latest')
 .get((req, res) => {
   return Message.findAll()
   .then(messagesList => {

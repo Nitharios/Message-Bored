@@ -59,4 +59,19 @@ router.route('/by-topic/:id')
   // res.json('respond with all messages that belong to the topic by :topic_id including the author\'s name, including the topic\'s name, ordered by createdAt ascending');
 });
 
+router.route('/by-user/:id')
+.get((req, res) => {
+  const id = req.params.id;
+  return Message.findAll({
+    include : [
+      { model : User },
+      { model : Topic }
+    ],
+    where : { author_id : id }
+  })
+  .then(messagesList => {
+    return res.json(messagesList);
+  });
+});
+
 module.exports = router;

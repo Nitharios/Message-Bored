@@ -3,13 +3,13 @@ angular.module('boredApp')
     var latestMessages = '/api/messages/latest';
     var postNew = '/api/messages';
     var messagesByTopic = '/api/messages/by-topic';
+    var messagesByUser = '/api/messages/by-user';
     var self = this;
     // collection of messages
     this.messages = [];
     // initialization of messagesList
     // read methods
     this.getMessages = function(topic_id) {
-
       if (topic_id) {
         return $http.get(messagesByTopic + '/' + topic_id)
         .then(function(messagesList) {
@@ -23,6 +23,14 @@ angular.module('boredApp')
         });
       }
     };
+
+    this.getMessagesByUser = function(author_id) {
+      return $http.get(messagesByUser + '/' + author_id )
+      .then(function(messagesList) {
+        return messagesList.data;
+      });
+    };
+
     // create message
     this.createMessage = function(body, author_id, topic_id) {
       if (!body) { return; }

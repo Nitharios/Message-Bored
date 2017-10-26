@@ -3,32 +3,12 @@ angular.module('boredApp')
     var url = '/api/users';
     var self = this;
     // collection of users
-    this.users = [];
-    // initialization of usersList
-    $http.get(url)
-    .then(function(usersList) {
-      self.users = usersList.data;
-    });
     // read methods
-    this.getUsers = function() { return self.users; };
-    // create user
-    this.createUser = function(username) {
-      if (!username) { return; }
-
-      var newUser = { username : username };
-      // check if username already exists
-      var userExists = self.users.some(function(element) {
-        return element.username === newUser.username;
-      });
-
-      if (userExists) return userExists; 
-      // create on frontend if user does not exist
-      self.users.push(newUser);
-      // create on backend
-      $http.post(url, newUser)
-      .then(function(response) {
-        return;
-      });
+    this.getUsers = function() { 
+      return $http.get(url)
+      .then(function(usersList) {
+        return usersList.data;
+      }); 
     };
     // get user information
     // should first check if user exists
@@ -36,6 +16,25 @@ angular.module('boredApp')
       return $http.get(url + '/' + username)
       .then(function(userData) {
         return userData.data;
+      });
+    };
+    // create user
+    this.createUser = function(username) {
+      if (!username) { return; }
+
+      var newUser = { username : username };
+      // check if username already exists
+      // var userExists = self.users.some(function(element) {
+      //   return element.username === newUser.username;
+      // });
+
+      // if (userExists) return userExists; 
+      // create on frontend if user does not exist
+      self.users.push(newUser);
+      // create on backend
+      return $http.post(url, newUser)
+      .then(function(response) {
+        return;
       });
     };
 }]);

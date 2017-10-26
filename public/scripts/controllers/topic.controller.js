@@ -1,11 +1,19 @@
 angular.module('boredApp')
-.controller('SingleTopicController', ['$scope', '$routeParams', 'TopicsService', function($scope, $routeParams, TopicsService) {
+.controller('SingleTopicController', ['$scope', '$routeParams', 'TopicsService', 'MessagesService', function($scope, $routeParams, TopicsService, MessagesService) {
 
   $scope.updatedTopic = {
     title : ''
   };
 
+  $scope.newMessage = { 
+    body : '',
+    // placeholder until validations are added
+    author_id : 1,
+    topic_id : $routeParams.id
+  };
+
   $scope.TopicsService = TopicsService;
+  $scope.MessagesService = MessagesService;
   
   TopicsService.getTopicById($routeParams.id)
   .then(function(topic) {
@@ -18,5 +26,10 @@ angular.module('boredApp')
       console.log(updatedTopic);
       $scope.updatedTopic.title = $scope.updatedTopic.title;
     });
+  };
+
+  $scope.createMessage = function() {
+    MessagesService.createMessage($scope.newMessage.body, $scope.newMessage.author_id, $routeParams.id);
+    $scope.newMessage.body = '';
   };
 }]);

@@ -16,7 +16,7 @@ router.route('/')
   let title = req.body.title;
   let created_by = req.body.created_by;
 
-  Topic.create({ 
+  return Topic.create({ 
     title : title, 
     created_by : created_by
   })
@@ -35,7 +35,6 @@ router.route('/:id')
 
   return Topic.findById(id, { raw : true })
   .then(topicInfo => {
-    console.log(topicInfo);
     return res.json(topicInfo);
   });
 })

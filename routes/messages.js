@@ -1,13 +1,33 @@
 /* jshint esversion:6 */
 const express = require('express');
+const db = require('../models');
+const Message = db.message;
+
 const router = express.Router();
 
 router.route('/')
 .get((req, res) => {
-  res.json('respond with the latest 10 messages including the name of the topic including the author\'s names');
+  return Message.findAll()
+  .then(messagesList => {
+    return res.json(messagesList);
+  });
+  // res.json('respond with the latest 10 messages including the name of the topic including the author\'s names');
 })
 .post((req, res) => {
-  res.json('create and respond with the new message');
+  let body = req.body.body;
+  let author_id = req.body.author_id;
+  let topic_id = req.body.topic_id;
+
+  return Message.create({
+    body : body,
+    author_id : author_id,
+    topic_id : topic_id
+  })
+  .then(response => {
+    console.log('New message created');
+    return res.json(response);
+  });
+  // res.json('create and respond with the new message');
 });
 
 router.route('/by-topic/:topic_id', (req, res) => {

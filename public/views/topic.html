@@ -4,7 +4,10 @@
 
 <input type="text" ng-model="updatedTopic.title">
 <button ng-click="updateTopicById()">Update</button>
+
 <br><br>
-<textarea ng-model="newMessage.body">Type your message here</textarea>
+<input type="text" ng-model="updatedTopic.title" disabled>
+<br><br>
+<textarea ng-model="newMessage.body" placeholder="Input text here"></textarea>
 <br>
 <button ng-click="createMessage()">Post Message</button>

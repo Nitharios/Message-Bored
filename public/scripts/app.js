@@ -23,6 +23,11 @@ var boredApp = angular.module('boredApp')
     templateUrl : '/views/topics.html',
     controller : 'TopicsController'
   })
+  .when('/topics/:id',
+  {
+    templateUrl : '/views/topic.html',
+    controller : 'SingleTopicController'
+  })
   .otherwise(
   {
     template : '<h1><center>SUCK IT TREBEK</center></h1>'

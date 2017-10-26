@@ -29,7 +29,17 @@ router.route('/')
   });
 });
 
-router.route('/:topicId')
+router.route('/:id')
+.get((req, res) => {
+  const id = req.params.id;
+
+  return Topic.findOne(
+  { where : { id : id } },
+  { raw : true })
+  .then(topicInfo => {
+    return res.json(topicInfo.dataValues);
+  });
+})
 .put((req, res) => {
   const topicId = req.params.topicId;
 

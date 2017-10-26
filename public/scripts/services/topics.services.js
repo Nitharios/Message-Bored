@@ -46,8 +46,8 @@ angular.module('boredApp')
 
     // get topic information
     // should first check if topic exists
-    this.getTopicByTitle = function(title) { 
-      $http.get(url + '/' + title)
+    this.getTopicById = function(id) { 
+      $http.get(url + '/' + id)
       .then(function(topicData) {
         self.topic = topicData.data;
       });

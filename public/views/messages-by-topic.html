@@ -1,14 +1,13 @@
-<h1>Hello from Messages!</h1>
+<h1>{{ topic.title }}</h1>
 
-<br><br>
-<textarea ng-model="newMessage.body" placeholder="Input text here"></textarea>
-<br>
-<button ng-click="createMessage()">Post Message</button>
-
-<br><br>
 <div>  
   <li ng-repeat="message in messages">
     {{ message.body }}
     by: <a ng-href="/users/{{ message.user.username }}">{{ message.user.username }}</a>
   </li>
 </div>
+
+<br><br>
+<textarea ng-model="newMessage.body" placeholder="Input text here"></textarea>
+<br>
+<button ng-click="createMessage()">Post Message</button>

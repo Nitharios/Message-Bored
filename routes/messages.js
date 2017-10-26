@@ -46,7 +46,10 @@ router.route('/by-topic/:id')
   const id = req.params.id;
 
   return Message.findAll({
-    include : [{ model : User }],
+    include : [
+      { model : User },
+      { model : Topic }
+    ],
     where : { author_id : id },
     order : [[ 'createdAt', 'ASC' ]]
   })

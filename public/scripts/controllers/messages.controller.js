@@ -1,7 +1,7 @@
 angular.module('boredApp')
 .controller('MessagesController', ['$scope', '$routeParams', 'TopicsService', 'MessagesService', function($scope, $routeParams, TopicsService, MessagesService) {
 
-  $scope.updatedTopic = {
+  $scope.topic = {
     title : ''
   };
 

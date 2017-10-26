@@ -2,8 +2,9 @@
 
 <div>  
   <li ng-repeat="topic in TopicsService.topics">
-    <a ng-href="/topics/{{ topic.id }}">{{ topic.title }}</a>
+    <a ng-href="/messages/by-topic/{{ topic.id }}">{{ topic.title }}</a>
     by: <a ng-href="users/{{ topic.user.username }}">{{ topic.user.username }}</a>
+    <a ng-href="/topics/{{ topic.id }}">EDIT</a>
   </li>
 </div>
 

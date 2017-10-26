@@ -7,21 +7,7 @@ const Topic = db.topic;
 
 const router = express.Router();
 
-router.route('/latest')
-.get((req, res) => {
-  return Message.findAll({
-    include : [
-      { model : User },
-      { model : Topic }
-    ],
-    order : [[ 'createdAt', 'DESC' ]],
-    limit : 10
-  })
-  .then(messagesList => {
-    return res.json(messagesList);
-  });
-  // res.json('respond with the latest 10 messages including the name of the topic including the author\'s names');
-})
+router.route('/')
 .post((req, res) => {
   let body = req.body.body;
   let author_id = req.body.author_id;
@@ -39,8 +25,35 @@ router.route('/latest')
   // res.json('create and respond with the new message');
 });
 
-router.route('/by-topic/:topic_id', (req, res) => {
-  res.json('respond with all messages that belong to the topic by :topic_id including the author\'s name, including the topic\'s name, ordered by createdAt ascending');
+router.route('/latest')
+.get((req, res) => {
+  return Message.findAll({
+    include : [
+      { model : User },
+      { model : Topic }
+    ],
+    order : [[ 'createdAt', 'DESC' ]],
+    limit : 10
+  })
+  .then(messagesList => {
+    return res.json(messagesList);
+  });
+  // res.json('respond with the latest 10 messages including the name of the topic including the author\'s names');
+});
+
+router.route('/by-topic/:id')
+.get((req, res) => {
+  const id = req.params.id;
+
+  return Message.findAll({
+    include : [{ model : User }],
+    where : { author_id : id },
+    order : [[ 'createdAt', 'ASC' ]]
+  })
+  .then(messagesList => {
+    return res.json(messagesList);
+  });
+  // res.json('respond with all messages that belong to the topic by :topic_id including the author\'s name, including the topic\'s name, ordered by createdAt ascending');
 });
 
 module.exports = router;

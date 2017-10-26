@@ -35,8 +35,8 @@ var boredApp = angular.module('boredApp')
   })
   .when('/messages/by-topic/:id',
   {
-    templateUrl : '/views/messages.html',
-    controller : 'MessagesByTopicController'
+    templateUrl : '/views/messages-by-topic.html',
+    controller : 'NewMessageController'
   })
   .otherwise(
   {

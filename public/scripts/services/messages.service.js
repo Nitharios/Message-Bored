@@ -1,16 +1,28 @@
 angular.module('boredApp')
 .service('MessagesService', ['$http', function($http) {
-    var url = '/api/messages/latest';
+    var latestMessages = '/api/messages/latest';
+    var newMessage = '/api/messages';
+    var messagesByTopic = '/api/messages/by-topic';
     var self = this;
     // collection of messages
     this.messages = [];
     // initialization of messagesList
-    $http.get(url)
-    .then(function(messagesList) {
-      self.messages = messagesList.data;
-    });
     // read methods
-    this.getMessages = function() { return self.messages; };
+    this.getMessages = function(topic_id) {
+
+      if (topic_id) {
+        return $http.get(messagesByTopic + '/' + topic_id)
+        .then(function(messagesList) {
+          return messagesList.data;
+        });
+
+      } else { 
+        return $http.get(latestMessages)
+        .then(function(messagesList) {
+          return messagesList.data;
+        });
+      }
+    };
     // create message
     this.createMessage = function(body, author_id, topic_id) {
       if (!body) { return; }

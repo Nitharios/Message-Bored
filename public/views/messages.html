@@ -1,7 +1,7 @@
 <h1>Hello from Messages!</h1>
 
 <div>  
-  <li ng-repeat="message in MessagesService.messages">
+  <li ng-repeat="message in messages">
     {{ message.user.username }}
     {{ message.topic.title }}
     {{ message.createdAt | date : 'short' }}

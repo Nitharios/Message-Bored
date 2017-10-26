@@ -1,5 +1,9 @@
 angular.module('boredApp')
 .controller('MessagesController', ['$scope', '$routeParams', 'TopicsService', 'MessagesService', function($scope, $routeParams, TopicsService, MessagesService) {
+  $scope.MessagesService = MessagesService;
+  $scope.TopicsService = TopicsService;
+
+  $scope.messages = [];
 
   $scope.topic = {
     title : ''
@@ -12,6 +16,8 @@ angular.module('boredApp')
     topic_id : $routeParams.id
   };
 
-  $scope.MessagesService = MessagesService;
-  $scope.TopicsService = TopicsService;
+  MessagesService.getMessages($routeParams.id)
+  .then(function(messagesList) {
+    $scope.messages = messagesList;
+  });
 }]);

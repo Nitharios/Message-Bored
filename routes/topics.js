@@ -2,12 +2,18 @@
 const express = require('express');
 const db = require('../models');
 const Topic = db.topic;
+const User = db.user;
+const Message = db.message;
 
 const router = express.Router();
 
 router.route('/')
 .get((req, res) => {
-  return Topic.findAll()
+  return Topic.findAll({
+    include : [{
+      model : User
+    }]
+  })
   .then(topicsList => {
     return res.json(topicsList);
   });
@@ -33,7 +39,13 @@ router.route('/:id')
 .get((req, res) => {
   const id = req.params.id;
 
-  return Topic.findById(id, { raw : true })
+  return Topic.findById(id, { raw : true }, {
+    include : [{ 
+      model : User
+    }, {
+      model : Topic
+    }]
+  })
   .then(topicInfo => {
     return res.json(topicInfo);
   });

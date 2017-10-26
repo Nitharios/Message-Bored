@@ -2,12 +2,23 @@
 const express = require('express');
 const db = require('../models');
 const Message = db.message;
+const User = db.user;
+const Topic = db.topic;
 
 const router = express.Router();
 
 router.route('/latest')
 .get((req, res) => {
-  return Message.findAll()
+  return Message.findAll(
+  { include : [
+    { model : User },
+    { model : Topic }
+  ]},
+  { order : [
+    [ 'createdAt', 'DESC' ]
+  ]},
+  { limit : 10 }
+  )
   .then(messagesList => {
     return res.json(messagesList);
   });

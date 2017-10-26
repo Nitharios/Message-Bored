@@ -1,5 +1,5 @@
 angular.module('boredApp')
-.controller('SingleTopicController', ['$scope', '$routeParams', 'TopicsService', 'MessagesService', function($scope, $routeParams, TopicsService, MessagesService) {
+.controller('SingleTopicController', ['$scope', '$routeParams', 'TopicsService', 'MessagesService', 'UsersService', function($scope, $routeParams, TopicsService, MessagesService, UsersService) {
 
   $scope.updatedTopic = {
     title : ''
@@ -14,6 +14,7 @@ angular.module('boredApp')
 
   $scope.TopicsService = TopicsService;
   $scope.MessagesService = MessagesService;
+  $scope.UsersService = UsersService;
   
   TopicsService.getTopicById($routeParams.id)
   .then(function(topic) {

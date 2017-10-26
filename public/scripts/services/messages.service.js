@@ -7,7 +7,6 @@ angular.module('boredApp')
     // initialization of messagesList
     $http.get(url)
     .then(function(messagesList) {
-      console.log(messagesList);
       self.messages = messagesList.data;
     });
     // read methods

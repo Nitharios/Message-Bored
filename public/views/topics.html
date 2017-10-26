@@ -3,7 +3,7 @@
 <div>  
   <li ng-repeat="topic in TopicsService.topics">
     <a ng-href="/topics/{{ topic.id }}">{{ topic.title }}</a>
-    by: <a ng-href="users/{{ topic.created_by }}">{{ topic.created_by }}</a>
+    by: <a ng-href="users/{{ topic.user.username }}">{{ topic.user.username }}</a>
   </li>
 </div>
 

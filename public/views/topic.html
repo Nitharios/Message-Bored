@@ -11,3 +11,11 @@
 <textarea ng-model="newMessage.body" placeholder="Input text here"></textarea>
 <br>
 <button ng-click="createMessage()">Post Message</button>
+
+<br><br>
+<div>  
+  <li ng-repeat="message in MessagesService.messages">
+    {{ message.body }}
+    by: <a ng-href="/users/{{ message.user.username }}">{{ message.user.username }}</a>
+  </li>
+</div>

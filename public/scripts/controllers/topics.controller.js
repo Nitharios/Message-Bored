@@ -1,12 +1,12 @@
 angular.module('boredApp')
-.controller('TopicsController', ['$scope', '$window', 'TopicsService', function($scope, $window, TopicsService) {
+.controller('TopicsController', ['$scope', '$window','TopicsService', function($scope, $window, TopicsService) {
 
   $scope.TopicsService = TopicsService;
   $scope.topics = [];
   $scope.newTopic = { 
     title : '',
     // placeholder until validations are added
-    created_by : 1
+    created_by : $window.localStorage.username
   };
 
   var failure = { success : false };
@@ -27,7 +27,6 @@ angular.module('boredApp')
 
     var newTopic = { 
       title : $scope.newTopic.title,
-      created_by : 1
     };
     // create on backend if topic does not exists
     TopicsService.createTopic(newTopic)

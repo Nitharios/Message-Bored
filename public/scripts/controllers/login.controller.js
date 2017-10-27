@@ -1,5 +1,5 @@
 angular.module('boredApp')
-.controller('LoginController', ['$scope', 'DashService', function($scope, DashService) {
+.controller('LoginController', ['$scope', '$location', 'DashService', function($scope, $location, DashService) {
 
   $scope.DashService = DashService;
 
@@ -9,7 +9,6 @@ angular.module('boredApp')
   };
 
   $scope.loginUser = function() {
-
     var userInfo = {
       username : $scope.userDetails.username,
       password : $scope.userDetails.password
@@ -19,9 +18,10 @@ angular.module('boredApp')
     .then(function(response) {
       if (response.success) {
         DashService.setUser(response);
-      
+        $location.path('/topics');
+
       } else {
-        console.log('Username or Password is incorrect!');
+        return response.success;
       }
     });
   };

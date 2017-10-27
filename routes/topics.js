@@ -22,18 +22,16 @@ router.route('/')
   });
 })
 .post(authenticate, (req, res) => {
-  let title = req.body.title;
-  let created_by = req.body.created_by;
-
   return Topic.create({ 
-    title : title, 
-    created_by : created_by
+    title : req.body.title, 
+    created_by : req.user.id
   })
   .then(response => {
-    console.log(`New topic ${title} created`);
+    console.log(`New topic ${req.body.title} created`);
     return res.json(success);
   })
   .catch(err => {
+    console.log(err);
     return res.json(failure);
   });
 });

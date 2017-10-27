@@ -23,7 +23,7 @@ angular.module('boredApp')
       // create on backend
       return $http.post(url, username)
       .then(function(response) {
-        return;
+        return ;
       });
     };
 }]);

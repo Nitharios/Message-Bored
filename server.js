@@ -2,6 +2,11 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+const passport = require('passport');
+const session = require('express-session');
+const redis = require('connect-redis')(session); 
+
+const authenticatePassport = require('./lib/passport');
 const db = require('./models');
 const routes = require('./routes');
 
@@ -11,8 +16,16 @@ const app = express();
 
 app.use(bodyParser.urlencoded({ extended : true }));
 app.use(bodyParser.json());
+app.use(session({
+  store: new redis(),
+  secret: "keyboard cat",
+  resave: false,
+  saveInitialized: false
+}));
 // serving up files from public on /
 app.use(express.static('public'));
+app.use(passport.initialize());
+app.use(passport.session());
 
 /* ROUTES */
 app.use('/api', routes);

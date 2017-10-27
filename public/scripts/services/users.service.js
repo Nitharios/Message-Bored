@@ -20,19 +20,8 @@ angular.module('boredApp')
     };
     // create user
     this.createUser = function(username) {
-      if (!username) { return; }
-
-      var newUser = { username : username };
-      // check if username already exists
-      // var userExists = self.users.some(function(element) {
-      //   return element.username === newUser.username;
-      // });
-
-      // if (userExists) return userExists; 
-      // create on frontend if user does not exist
-      self.users.push(newUser);
       // create on backend
-      return $http.post(url, newUser)
+      return $http.post(url, username)
       .then(function(response) {
         return;
       });

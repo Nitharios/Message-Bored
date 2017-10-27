@@ -24,7 +24,7 @@ angular.module('boredApp')
     // create on frontend if user does not exist
     $scope.users.push(newUser);
 
-    UsersService.createUser($scope.newUser);
+    UsersService.createUser(newUser);
     $scope.newUser.username = '';
   };
 }]);

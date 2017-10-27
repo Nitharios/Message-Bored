@@ -10,7 +10,7 @@ angular.module('boredApp')
       }); 
     };
     // create topic
-    this.createTopic = function(title, created_by) {
+    this.createTopic = function(newTopic) {
       // create on backend
       $http.post(url, newTopic)
       .then(function(response) {

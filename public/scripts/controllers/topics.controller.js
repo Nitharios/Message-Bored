@@ -18,18 +18,18 @@ angular.module('boredApp')
     if (!$scope.newTopic.title) { return; }
 
     var newTopic = { 
-      title : title,
-      created_by : created_by
+      title : $scope.newTopic.title,
+      created_by : 1
     };
     // check if title already exists
-    var topicExists = self.topics.some(function(element) {
+    var topicExists = $scope.topics.some(function(element) {
       return element.title === newTopic.title;
     });
     if (topicExists) return topicExists; 
     // create on frontend if topic does not exist
-    self.topics.push(newTopic);
+    $scope.topics.push(newTopic);
     // create on backend    
-    TopicsService.createTopic($scope.newTopic.title, $scope.newTopic.created_by);
+    TopicsService.createTopic(newTopic);
     $scope.newTopic.title = '';
     $scope.newTopic.created_by = '';
   };

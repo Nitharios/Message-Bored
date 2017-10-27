@@ -19,9 +19,9 @@ angular.module('boredApp')
       });
     };
     // create user
-    this.createUser = function(username) {
+    this.createUser = function(newUser) {
       // create on backend
-      return $http.post(url, username)
+      return $http.post(url, newUser)
       .then(function(response) {
         return ;
       });

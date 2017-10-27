@@ -29,14 +29,14 @@ angular.module('boredApp')
     }
 
     var newMessage = { 
-      body : body,
-      author_id : author_id,
-      topic_id : topic_id
+      body : $scope.newMessage.body,
+      author_id : 1,
+      topic_id : $routeParams.id
     };
     // create on frontend
     $scope.messages.push(newMessage);
     // create on backend
-    MessagesService.createMessage($scope.newMessage.body, $scope.newMessage.author_id, $routeParams.id);
+    MessagesService.createMessage(newMessage);
     $scope.newMessage.body = '';
   };  
 }]);

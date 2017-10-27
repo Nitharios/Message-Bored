@@ -29,7 +29,7 @@ angular.module('boredApp')
     };
 
     // create message
-    this.createMessage = function(body, author_id, topic_id) {
+    this.createMessage = function(newMessage) {
       // create on backend
       $http.post(postNew, newMessage)
       .then(function(response) {

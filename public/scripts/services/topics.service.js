@@ -12,7 +12,7 @@ angular.module('boredApp')
     // create topic
     this.createTopic = function(newTopic) {
       // create on backend
-      $http.post(url, newTopic)
+      return $http.post(url, newTopic)
       .then(function(response) {
         return response.data;
       });

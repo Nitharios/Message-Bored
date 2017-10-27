@@ -32,6 +32,7 @@ angular.module('boredApp')
     TopicsService.createTopic(newTopic)
     .then(function(response) {
       // create on frontend if backend is successful
+      console.log(response);
       if (response.success) $scope.topics.push(newTopic);
     });
     $scope.newTopic.title = '';

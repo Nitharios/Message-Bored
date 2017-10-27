@@ -14,8 +14,8 @@ angular.module('boredApp')
     // should first check if user exists
     this.getUserByUsername = function(username) { 
       return $http.get(url + '/' + username)
-      .then(function(userData) {
-        return userData.data;
+      .then(function(userDetails) {
+        return userDetails.data;
       });
     };
     // create user

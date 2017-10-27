@@ -25,4 +25,13 @@ angular.module('boredApp')
       }
     });
   };
+
+  $scope.deleteTopic = function() {
+    TopicsService.deleteTopic($routeParams.id)
+    .then(function(response) {
+      if (response.success) {
+        $scope.currentTopic.title = 'Topic Deleted';
+      }
+    });
+  };
 }]);

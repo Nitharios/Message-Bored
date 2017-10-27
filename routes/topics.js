@@ -66,6 +66,20 @@ router.route('/:id')
   .catch(err => {
     return res.json(failure);
   });
+})
+.delete(authenticate, (req, res) => {
+  const id = req.params.id;
+
+  return Topic.destroy({
+    where : { id : id }
+  })
+  .then(response => {
+    console.log(response);
+    return res.json(success);
+  })
+  .catch(err => {
+    return res.json(failure);
+  });
 });
 
 module.exports = router;

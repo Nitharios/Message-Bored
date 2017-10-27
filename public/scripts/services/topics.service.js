@@ -25,12 +25,18 @@ angular.module('boredApp')
         return topicData.data;
       });
     };
-
     // update topic title
     this.updateTopicById = function(update) {
       return $http.put(url + '/' + update.id, {
         title : update.title
       })
+      .then(function(response) {
+        return response.data;
+      });
+    };
+    // deletes topics
+    this.deleteTopic = function(id) {
+      return $http.delete(url + '/' + id)
       .then(function(response) {
         return response.data;
       });

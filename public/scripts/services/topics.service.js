@@ -14,7 +14,7 @@ angular.module('boredApp')
       // create on backend
       $http.post(url, newTopic)
       .then(function(response) {
-        return;
+        return response.data;
       });
     };
     // get topic information
@@ -31,8 +31,8 @@ angular.module('boredApp')
       return $http.put(url + '/' + id, {
         title : updatedTitle
       })
-      .then(function(updatedTopicData) {
-        return updatedTopicData.data;
+      .then(function(response) {
+        return response.data;
       });
     };
 }]);

@@ -27,10 +27,13 @@ angular.module('boredApp')
       title : $scope.newTopic.title,
       created_by : 1
     };
-    // create on frontend if topic does not exist
-    $scope.topics.push(newTopic);
-    // create on backend    
-    TopicsService.createTopic(newTopic);
+    
+    // create on backend if topic does not exists
+    TopicsService.createTopic(newTopic)
+    .then(function(response) {
+      // create on frontend if backend is successful
+      if (response.success) $scope.topics.push(newTopic);
+    });
     $scope.newTopic.title = '';
     $scope.newTopic.created_by = '';
   };

@@ -5,6 +5,8 @@ const authenticate = require('../lib/authenticate');
 
 const Topic = db.topic;
 const User = db.user;
+const success = { success : true };
+const failure = { success : false };
 
 const router = express.Router();
 
@@ -29,10 +31,10 @@ router.route('/')
   })
   .then(response => {
     console.log(`New topic ${title} created`);
-    return res.json(response);
+    return res.json(success);
   })
   .catch(err => {
-    return console.log(err);
+    return res.json(failure);
   });
 });
 
@@ -59,7 +61,10 @@ router.route('/:id')
     { where : { id : id } 
   })
   .then(response => {
-    return res.json(response);
+    return res.json(success);
+  })
+  .catch(err => {
+    return res.json(failure);
   });
 });
 

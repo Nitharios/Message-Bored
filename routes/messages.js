@@ -1,6 +1,8 @@
 /* jshint esversion:6 */
 const express = require('express');
 const db = require('../models');
+const authenticate = require('../lib/authenticate');
+
 const Message = db.message;
 const User = db.user;
 const Topic = db.topic;
@@ -8,7 +10,7 @@ const Topic = db.topic;
 const router = express.Router();
 
 router.route('/')
-.post((req, res) => {
+.post(authenticate, (req, res) => {
   let body = req.body.body;
   let author_id = req.body.author_id;
   let topic_id = req.body.topic_id;

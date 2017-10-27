@@ -1,6 +1,8 @@
 /* jshint esversion:6 */
 const express = require('express');
 const db = require('../models');
+const authenticate = require('../lib/authenticate');
+
 const Topic = db.topic;
 const User = db.user;
 
@@ -17,7 +19,7 @@ router.route('/')
     return res.json(topicsList);
   });
 })
-.post((req, res) => {
+.post(authenticate, (req, res) => {
   let title = req.body.title;
   let created_by = req.body.created_by;
 
@@ -49,7 +51,7 @@ router.route('/:id')
     return res.json(topicInfo);
   });
 })
-.put((req, res) => {
+.put(authenticate, (req, res) => {
   const id = req.params.id;
 
   return Topic.update(

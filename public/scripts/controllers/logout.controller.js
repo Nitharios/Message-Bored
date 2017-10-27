@@ -1,6 +1,6 @@
 angular.module('boredApp')
-.controller('LogoutController', ['$scope', 'LogoutService', function($scope, LogoutService) {
+.controller('LogoutController', ['$scope', 'DashService', function($scope, DashService) {
 
-  $scope.LogoutService = LogoutService;
+  $scope.DashService = DashService;
 
 }]);

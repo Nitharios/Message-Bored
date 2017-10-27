@@ -13,17 +13,18 @@ const failure = { success : false };
 const saltRounds = 12;
 
 router.route('/login')
-.post(passport.authenticate('local', (req, res) => {
-  return res.json({ 
+.post(passport.authenticate('local'), (req, res) => {
+  return res.json({
+    id : req.body.id, 
     username : req.body.username,
     success : true
   });
-}));
+});
 
 router.route('/logout')
 .get((req, res) => {
   req.logout();
-  return res.status(200).json(success);
+  return res.status(200).json(success).end();
 });
 
 router.route('/register')

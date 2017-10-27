@@ -16,16 +16,17 @@ angular.module('boredApp')
 
   $scope.createTopic = function() {
     if (!$scope.newTopic.title) { return; }
+    // check if title already exists
+    var topicExists = $scope.topics.some(function(element) {
+      return element.title === $scope.newTopic.title;
+    });
+
+    if (topicExists) return topicExists; 
 
     var newTopic = { 
       title : $scope.newTopic.title,
       created_by : 1
     };
-    // check if title already exists
-    var topicExists = $scope.topics.some(function(element) {
-      return element.title === newTopic.title;
-    });
-    if (topicExists) return topicExists; 
     // create on frontend if topic does not exist
     $scope.topics.push(newTopic);
     // create on backend    

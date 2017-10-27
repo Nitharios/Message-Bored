@@ -23,11 +23,6 @@ var boredApp = angular.module('boredApp')
     templateUrl : '/views/topics.html',
     controller : 'TopicsController'
   })
-  .when('/topics/:id',
-  {
-    templateUrl : '/views/topic.html',
-    controller : 'SingleTopicController'
-  })
   .when('/messages/latest',
   {
     templateUrl : '/views/messages.html',

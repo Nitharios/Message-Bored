@@ -9,7 +9,7 @@ var boredApp = angular.module('boredApp')
     templateUrl : '/views/home.html'
   })
   .when('/register', {
-    templateUrl : '/views/register.html',
+    templateUrl : '/views/registration.html',
     controller : 'RegistrationController'
   })
   .when('/login', {

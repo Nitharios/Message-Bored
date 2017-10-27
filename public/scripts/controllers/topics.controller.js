@@ -1,5 +1,5 @@
 angular.module('boredApp')
-.controller('TopicsController', ['$scope', '$location', 'TopicsService', function($scope, $location, TopicsService) {
+.controller('TopicsController', ['$scope', '$window', 'TopicsService', function($scope, $window, TopicsService) {
 
   $scope.TopicsService = TopicsService;
   $scope.topics = [];
@@ -34,7 +34,7 @@ angular.module('boredApp')
     .then(function(response) {
       // create on frontend if backend is successful
       if (response.success) {
-        $location.path('/topics');
+        $window.location.reload();
       }
     });
   };

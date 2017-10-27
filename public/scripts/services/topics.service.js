@@ -27,9 +27,9 @@ angular.module('boredApp')
     };
 
     // update topic title
-    this.updateTopicById = function(id, updatedTitle) {
-      return $http.put(url + '/' + id, {
-        title : updatedTitle
+    this.updateTopicById = function(update) {
+      return $http.put(url + '/' + update.id, {
+        title : update.title
       })
       .then(function(response) {
         return response.data;

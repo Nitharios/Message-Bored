@@ -8,6 +8,17 @@ var boredApp = angular.module('boredApp')
   .when('/', {
     templateUrl : '/views/home.html'
   })
+  .when('/register', {
+    templateUrl : '/views/register.html',
+    controller : 'RegistrationController'
+  })
+  .when('/login', {
+    templateUrl : '/views/login.html',
+    controller : 'LoginController'
+  })
+  .when('/logout', {
+    redirectTo : '/'
+  })
   .when('/users', 
   {
     templateUrl : '/views/users.html',

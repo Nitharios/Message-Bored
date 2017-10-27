@@ -10,7 +10,7 @@ angular.module('boredApp')
   this.createUser = function(newUser) {
     return $http.post(register, newUser)
     .then(function(response) {
-      return(response.data.success);
+      return(response.data);
     });
   };
 

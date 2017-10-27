@@ -1,5 +1,5 @@
 angular.module('boredApp')
-.controller('TopicsController', ['$scope', 'TopicsService', function($scope, TopicsService) {
+.controller('TopicsController', ['$scope', '$location', 'TopicsService', function($scope, $location, TopicsService) {
 
   $scope.TopicsService = TopicsService;
   $scope.topics = [];
@@ -8,6 +8,8 @@ angular.module('boredApp')
     // placeholder until validations are added
     created_by : 1
   };
+
+  var failure = { success : false };
 
   TopicsService.getTopics()
   .then(function(topicsList) {
@@ -21,21 +23,19 @@ angular.module('boredApp')
       return element.title === $scope.newTopic.title;
     });
 
-    if (topicExists) return topicExists; 
+    if (topicExists) return failure; 
 
     var newTopic = { 
       title : $scope.newTopic.title,
       created_by : 1
     };
-    
     // create on backend if topic does not exists
     TopicsService.createTopic(newTopic)
     .then(function(response) {
       // create on frontend if backend is successful
-      console.log(response);
-      if (response.success) $scope.topics.push(newTopic);
+      if (response.success) {
+        $location.path('/topics');
+      }
     });
-    $scope.newTopic.title = '';
-    $scope.newTopic.created_by = '';
   };
 }]);

@@ -1,8 +1,7 @@
 angular.module('boredApp')
-.controller('SingleTopicController', ['$scope', '$routeParams', 'UsersService', 'TopicsService', 'MessagesService', function($scope, $routeParams, UsersService, TopicsService, MessagesService) {
+.controller('SingleTopicController', ['$scope', '$routeParams', '$location', 'UsersService', 'TopicsService', function($scope, $routeParams, $location, UsersService, TopicsService) {
   $scope.UsersService = UsersService;
   $scope.TopicsService = TopicsService;
-  $scope.MessagesService = MessagesService;
 
   $scope.currentTopic = { title : '' };
   $scope.updatedTopic = { title : '' };
@@ -30,7 +29,7 @@ angular.module('boredApp')
     TopicsService.deleteTopic($routeParams.id)
     .then(function(response) {
       if (response.success) {
-        $scope.currentTopic.title = 'Topic Deleted';
+        $location.path('/topics');
       }
     });
   };

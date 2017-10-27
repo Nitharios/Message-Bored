@@ -1,5 +1,5 @@
 angular.module('boredApp')
-.controller('RegistrationController', ['$scope', 'DashService', 'UsersService', function($scope, DashService, UsersService) {
+.controller('RegistrationController', ['$scope', '$location', 'DashService', 'UsersService', function($scope, $location, DashService, UsersService) {
   $scope.DashService = DashService;
   $scope.UsersService = UsersService;
 
@@ -33,12 +33,13 @@ angular.module('boredApp')
       password : $scope.newUser.password
     };
 
-    // create on frontend if user does not exist
-    // should just log user in if the username is accepted
-    $scope.users.push(newUser);
 
-    DashService.createUser(newUser);
-    $scope.newUser.username = '';
-    $scope.newUser.password = '';
+    DashService.createUser(newUser)
+    .then(function(response) {
+      // should just log user in if the username is accepted
+      if (response.success) {
+        $location.path('/');
+      }
+    });
   };
 }]);

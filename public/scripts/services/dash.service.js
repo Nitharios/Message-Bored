@@ -17,12 +17,9 @@ angular.module('boredApp')
   this.loginUser = function(userInfo) {
     return $http.post(login, userInfo)
     .then(function(response) {
-
-      // console.log(response.data)
-      
       if (response.data.success) {
         var userDetails = {
-          userId : response.data.id,
+          id : response.data.id,
           username : response.data.username,
           success : true
         };
@@ -35,9 +32,20 @@ angular.module('boredApp')
     });
   };
 
+  this.logoutUser = function() {
+    return $http.get(logout)
+    .then(function(response) {
+      return response.data;
+    });
+  };
+
   this.setUser = function(details) {
-    localStorage.setItem('userId', details.userId);
+    localStorage.setItem('id', details.id);
     localStorage.setItem('username', details.username);
     localStorage.setItem('isLoggedIn', details.success);
+  };
+
+  this.clearUser = function() {
+    localStorage.clear();
   };
 }]);

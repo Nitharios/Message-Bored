@@ -3,4 +3,10 @@ angular.module('boredApp')
 
   $scope.DashService = DashService;
 
+  DashService.logoutUser()
+  .then(function(response) {
+    if (response.success) {
+      DashService.clearUser();
+    }
+  });
 }]);

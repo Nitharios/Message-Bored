@@ -17,7 +17,9 @@ var boredApp = angular.module('boredApp')
     controller : 'LoginController'
   })
   .when('/dash/logout', {
-    redirectTo : '/'
+    // need to change templateUrl to a logout page
+    templateUrl : '/views/home.html',
+    controller : 'LogoutController'
   })
   .when('/users', 
   {

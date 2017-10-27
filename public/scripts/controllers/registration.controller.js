@@ -38,7 +38,7 @@ angular.module('boredApp')
     .then(function(response) {
       // should just log user in if the username is accepted
       if (response.success) {
-        $location.path('/');
+        $location.path('/login');
       }
     });
   };

@@ -1,5 +1,5 @@
 angular.module('boredApp')
-.controller('NewMessageController', ['$scope', '$routeParams', 'TopicsService', 'MessagesService', function($scope, $routeParams, TopicsService, MessagesService) {
+.controller('NewMessageController', ['$scope', '$window', '$routeParams', 'TopicsService', 'MessagesService', function($scope, $window, $routeParams, TopicsService, MessagesService) {
   $scope.TopicsService = TopicsService;
   $scope.MessagesService = MessagesService;
 
@@ -30,13 +30,14 @@ angular.module('boredApp')
 
     var newMessage = { 
       body : $scope.newMessage.body,
-      author_id : 1,
       topic_id : $routeParams.id
     };
-    // create on frontend
-    $scope.messages.push(newMessage);
     // create on backend
-    MessagesService.createMessage(newMessage);
-    $scope.newMessage.body = '';
+    MessagesService.createMessage(newMessage)
+    .then(function(response) {
+      if (response.success) {
+        $window.location.reload();
+      }
+    });
   };  
 }]);

@@ -1,9 +1,11 @@
 <h1>Register</h1>
 
 <div>
-  <br>Username:
-  <br><input type="text" ng-model="newUser.username" placeholder="Username">
-  <br><br>Password:
-  <br><input type="text" ng-model="newUser.password" placeholder="Password">
-  <br><br><button ng-click="createUser()">Register</button>
+  <form>
+    Username:
+    <br><input type="text" ng-model="newUser.username" placeholder="username">
+    <br><br>Password:
+    <br><input type="password" ng-model="newUser.password" placeholder="password">
+    <br><br><input type="submit" ng-click="createUser()" value="Register"></input>
+  </form>
 </div>

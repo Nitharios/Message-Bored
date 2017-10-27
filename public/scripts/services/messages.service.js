@@ -31,9 +31,9 @@ angular.module('boredApp')
     // create message
     this.createMessage = function(newMessage) {
       // create on backend
-      $http.post(postNew, newMessage)
+      return $http.post(postNew, newMessage)
       .then(function(response) {
-        return;
+        return response.data;
       });
     };
 }]);

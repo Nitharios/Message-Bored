@@ -3,6 +3,8 @@ angular.module('boredApp')
   $scope.DashService = DashService;
   $scope.UsersService = UsersService;
 
+  var failure = { success : false };
+
   $scope.users = [];
   $scope.newUser = {
     username : '',
@@ -22,7 +24,9 @@ angular.module('boredApp')
       return element.username === $scope.newUser.username;
     });
 
-    if (userExists) { return; }
+    if (userExists) { 
+      return failure; 
+    }
     
     var newUser = { 
       username : $scope.newUser.username,

@@ -5,7 +5,9 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       unique : true,
       allowNull : false
-    }
+    },
+    password : DataTypes.STRING,
+    role : { type : DataTypes.STRING, defaultValue : 'user' }
   }, {
     tableName : 'users'
   }, {
@@ -14,6 +16,10 @@ module.exports = function(sequelize, DataTypes) {
         name : 'users_pkey',
         unique : true,
         fields : ['id']
+      },
+      {
+        name : 'role_key',
+        fields : ['role']
       }
     ]
   });

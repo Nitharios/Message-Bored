@@ -6,10 +6,10 @@ angular.module('boredApp')
   var logout = url + '/' + 'logout';
 
   // register the user
-  this.createUser = function (newUser) {
+  this.createUser = function(newUser) {
     return $http.post(register, newUser)
     .then(function(response) {
-      res.json('User created successfully');
+      return(response.data.success);
     });
   };
 }]);

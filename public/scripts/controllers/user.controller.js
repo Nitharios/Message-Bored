@@ -3,12 +3,11 @@ angular.module('boredApp')
   $scope.UsersService = UsersService;
   $scope.MessagesService = MessagesService;
 
+  $scope.userMessages = [];
   $scope.user = {
     id : '',
     username : ''
   };
-
-  $scope.userMessages = [];
 
   UsersService.getUserByUsername($routeParams.username)
   .then(function(userDetails) {
@@ -20,5 +19,4 @@ angular.module('boredApp')
       $scope.userMessages = userMessages;
     });
   });
-
 }]);

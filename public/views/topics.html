@@ -1,7 +1,7 @@
 <h1>List of Topics</h1>
 
 <div>  
-  <li ng-repeat="topic in TopicsService.topics">
+  <li ng-repeat="topic in topics">
     <a ng-href="/messages/by-topic/{{ topic.id }}">{{ topic.title }}</a>
     by: <a ng-href="users/{{ topic.user.username }}">{{ topic.user.username }}</a>
     <a ng-href="/topics/{{ topic.id }}">EDIT</a>

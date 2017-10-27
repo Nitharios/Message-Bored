@@ -1,20 +1,16 @@
 angular.module('boredApp')
-.controller('SingleTopicController', ['$scope', '$routeParams', 'TopicsService', 'MessagesService', 'UsersService', function($scope, $routeParams, TopicsService, MessagesService, UsersService) {
+.controller('SingleTopicController', ['$scope', '$routeParams', 'UsersService', 'TopicsService', 'MessagesService', function($scope, $routeParams, UsersService, TopicsService, MessagesService) {
+  $scope.UsersService = UsersService;
+  $scope.TopicsService = TopicsService;
+  $scope.MessagesService = MessagesService;
 
-  $scope.updatedTopic = {
-    title : ''
-  };
-
+  $scope.updatedTopic = { title : '' };
   $scope.newMessage = { 
     body : '',
     // placeholder until validations are added
     author_id : 1,
     topic_id : $routeParams.id
   };
-
-  $scope.TopicsService = TopicsService;
-  $scope.MessagesService = MessagesService;
-  $scope.UsersService = UsersService;
   
   TopicsService.getTopicById($routeParams.id)
   .then(function(topic) {

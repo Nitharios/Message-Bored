@@ -1,10 +1,8 @@
 /* jshint esversion:6 */
 const express = require('express');
+const success = require('../lib/success');
 const db = require('../models');
 const User = db.user;
-
-const success = { success : true };
-const failure = { success : false };
 
 const router = express.Router();
 
@@ -25,11 +23,11 @@ router.route('/')
   User.create({ username : username })
   .then(response => {
     console.log(`New user ${username} created`);
-    return res.json(success);
+    return res.json(success.win);
   })
   .catch(err => {
     // could use something to log this error
-    return res.json(failure);
+    return res.json(success.lose);
   });
 });
 

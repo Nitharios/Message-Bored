@@ -2,15 +2,13 @@
 const express = require('express');
 const db = require('../models');
 const authenticate = require('../lib/authenticate');
+const success = require('../lib/success');
 
 const Message = db.message;
 const User = db.user;
 const Topic = db.topic;
 
 const router = express.Router();
-
-const success = { success : true };
-const failure = { success : false };
 
 router.route('/')
 .post(authenticate, (req, res) => {
@@ -20,10 +18,10 @@ router.route('/')
     topic_id : req.body.topic_id
   })
   .then(response => {
-    return res.json(success);
+    return res.json(success.win);
   })
   .catch(err => {
-    return res.json(failure);
+    return res.json(success.lose);
   });
 });
 
@@ -52,10 +50,10 @@ router.route('/:id')
     where : { id : id }
   })
   .then(response => {
-    return res.json(success);
+    return res.json(success.win);
   })
   .catch(err => {
-    return res.json(failure);
+    return res.json(success.lose);
   });
 });
 

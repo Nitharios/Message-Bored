@@ -3,13 +3,13 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const passport = require('passport');
 const session = require('express-session');
-
 const db = require('../models');
+const success = require('../lib/success');
 
 const User = db.user;
 const router = express.Router();
-const success = { success : true };
-const failure = { success : false };
+// const success = { success : true };
+// const failure = { success : false };
 const saltRounds = 12;
 
 router.route('/login')
@@ -24,7 +24,7 @@ router.route('/login')
 router.route('/logout')
 .get((req, res) => {
   req.logout();
-  res.status(200).json(success);
+  res.status(200).json(success.win);
 });
 
 router.route('/register')
@@ -38,10 +38,10 @@ router.route('/register')
         password : hash
       })
       .then(user => {
-        return res.json(success);
+        return res.json(success.win);
       })
       .catch(err => { 
-        return res.json(failure);
+        return res.json(success.lose);
       });
     });
   });

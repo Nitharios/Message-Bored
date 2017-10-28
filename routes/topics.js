@@ -2,12 +2,10 @@
 const express = require('express');
 const db = require('../models');
 const authenticate = require('../lib/authenticate');
+const success = require('../lib/success');
 
 const Topic = db.topic;
 const User = db.user;
-const success = { success : true };
-const failure = { success : false };
-
 const router = express.Router();
 
 router.route('/')
@@ -30,10 +28,10 @@ router.route('/')
   })
   .then(response => {
     console.log(`New topic ${req.body.title} created`);
-    return res.json(success);
+    return res.json(success.win);
   })
   .catch(err => {
-    return res.json(failure);
+    return res.json(success.lose);
   });
 });
 
@@ -60,10 +58,10 @@ router.route('/:id')
     { where : { id : id } 
   })
   .then(response => {
-    return res.json(success);
+    return res.json(success.win);
   })
   .catch(err => {
-    return res.json(failure);
+    return res.json(success.lose);
   });
 })
 .delete(authenticate, (req, res) => {
@@ -73,10 +71,10 @@ router.route('/:id')
     where : { id : id }
   })
   .then(response => {
-    return res.json(success);
+    return res.json(success.win);
   })
   .catch(err => {
-    return res.json(failure);
+    return res.json(failure.lose);
   });
 });
 

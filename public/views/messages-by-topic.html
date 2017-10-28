@@ -1,5 +1,7 @@
 <h1>{{ topic.title }}</h1>
-
+{{ topic.createdAt | date : 'shortDate' }}
+<br><br> <a ng-href="/users/{{ topic.createdBy }}">{{ topic.createdBy }}</a>
+<br><br>
 <div>  
   <li ng-repeat="message in messages">
     {{ message.body }}

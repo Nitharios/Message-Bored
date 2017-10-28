@@ -3,18 +3,22 @@ angular.module('boredApp')
   $scope.TopicsService = TopicsService;
   $scope.MessagesService = MessagesService;
 
-  $scope.topic = { title : '' };
+  $scope.topic = { 
+    title : '',
+    createdAt : '',
+    createdBy : ''
+  };
   $scope.messages = [];
   $scope.newMessage = { 
     body : '',
-    // placeholder until validations are added
-    author_id : 1,
     topic_id : $routeParams.id
   };
   // sets the topic title based on uri ID
   TopicsService.getTopicById($routeParams.id)
   .then(function(topicData) {
     $scope.topic.title = topicData.title;
+    $scope.topic.createdAt = topicData.createdAt;
+    $scope.topic.createdBy = topicData.user.username;
   });
   // sets the messages associated with the topic ID
   MessagesService.getMessages($routeParams.id)

@@ -3,6 +3,7 @@
 <div>  
   <li ng-repeat="topic in topics">
     <a ng-href="/messages/by-topic/{{ topic.id }}">{{ topic.title }}</a>
+    {{ topic.createdAt | date : 'short' }}
     by: <a ng-href="users/{{ topic.user.username }}">{{ topic.user.username }}</a>
     <!-- if topic.created_by === user.id show element -->
     <a ng-href="/topics/{{ topic.id }}" ng-if="created(topic.created_by)">EDIT</a>

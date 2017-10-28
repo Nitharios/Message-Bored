@@ -13,9 +13,7 @@ const router = express.Router();
 router.route('/')
 .get((req, res) => {
   return Topic.findAll({
-    include : [
-    { model : User }
-    ]
+    include : [{ model : User }]
   })
   .then(topicsList => {
     return res.json(topicsList);
@@ -31,7 +29,6 @@ router.route('/')
     return res.json(success);
   })
   .catch(err => {
-    console.log(err);
     return res.json(failure);
   });
 });
@@ -40,12 +37,8 @@ router.route('/:id')
 .get((req, res) => {
   const id = req.params.id;
 
-  return Topic.findById(id, { raw : true }, {
-    include : [{ 
-      model : User
-    }, {
-      model : Topic
-    }]
+  return Topic.findById(id, {
+    include : [{ model : User }]
   })
   .then(topicInfo => {
     return res.json(topicInfo);
@@ -72,7 +65,6 @@ router.route('/:id')
     where : { id : id }
   })
   .then(response => {
-    console.log(response);
     return res.json(success);
   })
   .catch(err => {

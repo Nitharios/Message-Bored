@@ -82,7 +82,8 @@ router.route('/by-user/:id')
       { model : User },
       { model : Topic }
     ],
-    where : { author_id : id }
+    where : { author_id : id },
+    order : [[ 'createdAt', 'ASC' ]]
   })
   .then(messagesList => {
     return res.json(messagesList);

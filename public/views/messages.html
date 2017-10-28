@@ -2,8 +2,12 @@
 
 <div>  
   <li ng-repeat="message in messages">
-    {{ message.user.username }}
-    {{ message.topic.title }}
+    <a ng-href="/users/{{ message.user.username }}">
+      {{ message.user.username }}
+    </a>
+    <a ng-href="/messages/by-topic/{{message.topic.id}}">
+      {{ message.topic.title }}
+    </a>
     {{ message.createdAt | date : 'short' }}
     <p>{{ message.body }}</p>
     <span ng-if="created(message.author_id)">

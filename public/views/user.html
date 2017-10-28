@@ -1,9 +1,16 @@
 <h2>{{ user.username }}</h2>
+
+Joined on {{ user.createdAt | date : 'shortDate' }}
+<br>{{ user.role }}
+
 <h3>Messages</h3>
 
 <div>  
   <li ng-repeat="message in userMessages">
-    {{ message.topic.title }}
+    <a ng-href="/messages/by-topic/{{message.topic_id}}">{{ message.topic.title }}</a>
+    {{ message.topic.createdAt | date : 'short' }}
+    <br><br>
+    {{ message.createdAt | date : 'short' }}
     <br><br>
     {{ message.body }}
     <br><br>

@@ -10,13 +10,13 @@
 </head>
 <body ng-app="boredApp">  
 
-  <div>
+  <div ng-controller="NavBarController">
     <a ng-href="/">Home</a>
-    <a ng-href="/dash/login">Login</a>
-    <span>
-      <a ng-href="/dash/logout">Logout</a>
+    <span ng-if="!isUserLoggedIn()">
+      <a ng-href="/dash/login">Login</a>
       <a ng-href="/dash/register">Register</a>
     </span>
+    <a ng-href="/dash/logout" ng-if="isUserLoggedIn()">Logout</a>
     <a ng-href="/users">Users</a>  
     <a ng-href="/topics">Topics</a> 
     <a ng-href="/messages/latest">Messages</a> 

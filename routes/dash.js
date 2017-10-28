@@ -6,10 +6,9 @@ const session = require('express-session');
 const db = require('../models');
 const success = require('../lib/success');
 
-const User = db.user;
 const router = express.Router();
-// const success = { success : true };
-// const failure = { success : false };
+
+const User = db.user;
 const saltRounds = 12;
 
 router.route('/login')

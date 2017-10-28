@@ -2,6 +2,7 @@
 const express = require('express');
 const success = require('../lib/success');
 const db = require('../models');
+
 const User = db.user;
 
 const router = express.Router();
@@ -26,7 +27,7 @@ router.route('/')
     return res.json(success.win);
   })
   .catch(err => {
-    // could use something to log this error
+    // could use something to print log this error
     return res.json(success.lose);
   });
 });
@@ -40,7 +41,6 @@ router.route('/:username')
     attributes: { exclude: ['password'] } 
   })
   .then(userInfo => {
-    // console.log('user profile and user messages');
     return res.json(userInfo.dataValues);
   });
 });

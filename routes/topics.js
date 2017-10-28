@@ -4,8 +4,8 @@ const db = require('../models');
 const authenticate = require('../lib/authenticate');
 const success = require('../lib/success');
 
-const Topic = db.topic;
 const User = db.user;
+const Topic = db.topic;
 const router = express.Router();
 
 router.route('/')

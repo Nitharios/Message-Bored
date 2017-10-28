@@ -4,9 +4,9 @@ const db = require('../models');
 const authenticate = require('../lib/authenticate');
 const success = require('../lib/success');
 
-const Message = db.message;
 const User = db.user;
 const Topic = db.topic;
+const Message = db.message;
 
 const router = express.Router();
 

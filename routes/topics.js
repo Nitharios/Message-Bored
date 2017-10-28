@@ -13,7 +13,11 @@ const router = express.Router();
 router.route('/')
 .get((req, res) => {
   return Topic.findAll({
-    include : [{ model : User }]
+    include : [{ 
+      model : User,
+      attributes: { exclude: ['password'] } 
+    }],
+    order : [[ 'createdAt', 'DESC' ]]
   })
   .then(topicsList => {
     return res.json(topicsList);
@@ -38,9 +42,13 @@ router.route('/:id')
   const id = req.params.id;
 
   return Topic.findById(id, {
-    include : [{ model : User }]
+    include : [{ 
+      model : User,
+      attributes: { exclude: ['password'] } 
+    }]
   })
   .then(topicInfo => {
+    topicInfo.user.dataValues.password = '';
     return res.json(topicInfo);
   });
 })

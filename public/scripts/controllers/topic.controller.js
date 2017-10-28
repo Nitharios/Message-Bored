@@ -5,6 +5,7 @@ angular.module('boredApp')
 
   $scope.currentTopic = { title : '' };
   $scope.updatedTopic = { title : '' };
+  $scope.message = { body : '' };
   
   TopicsService.getTopicById($routeParams.id)
   .then(function(topic) {
@@ -18,9 +19,11 @@ angular.module('boredApp')
     };
 
     TopicsService.updateTopicById(update)
-    .then(function(updatedTopic) {
-      if (updatedTopic.success) {
-        $scope.currentTopic.title = $scope.updatedTopic.title;
+    .then(function(response) {
+      if (response.success) {
+        $location.path('/topics');
+      } else {
+        $scope.message.body = 'This topic already exists!';
       }
     });
   };
@@ -30,7 +33,7 @@ angular.module('boredApp')
     .then(function(response) {
       if (response.success) {
         $location.path('/topics');
-      }
+      } 
     });
   };
 }]);

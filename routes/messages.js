@@ -31,8 +31,10 @@ router.route('/latest')
 .get((req, res) => {
   return Message.findAll({
     include : [
-      { model : User },
-      { model : Topic }
+      { model : Topic },
+      { model : User,
+        attributes: { exclude: ['password'] }
+      }
     ],
     order : [[ 'createdAt', 'DESC' ]],
     limit : 10
@@ -63,8 +65,10 @@ router.route('/by-topic/:id')
 
   return Message.findAll({
     include : [
-      { model : User },
-      { model : Topic }
+      { model : Topic },
+      { model : User,
+        attributes: { exclude: ['password'] } 
+      }
     ],
     where : { topic_id : id },
     order : [[ 'createdAt', 'ASC' ]]
@@ -79,8 +83,10 @@ router.route('/by-user/:id')
   const id = req.params.id;
   return Message.findAll({
     include : [
-      { model : User },
-      { model : Topic }
+      { model : Topic },
+      { model : User, 
+        attributes: { exclude: ['password'] }
+      }
     ],
     where : { author_id : id },
     order : [[ 'createdAt', 'ASC' ]]

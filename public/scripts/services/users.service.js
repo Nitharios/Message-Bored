@@ -2,8 +2,7 @@ angular.module('boredApp')
 .service('UsersService', ['$http', function($http) {
     var url = '/api/users';
     var self = this;
-    // collection of users
-    // read methods
+    
     this.getUsers = function() { 
       return $http.get(url)
       .then(function(usersList) {
@@ -16,14 +15,6 @@ angular.module('boredApp')
       return $http.get(url + '/' + username)
       .then(function(userDetails) {
         return userDetails.data;
-      });
-    };
-    // create user
-    this.createUser = function(newUser) {
-      // create on backend
-      return $http.post(url, newUser)
-      .then(function(response) {
-        return ;
       });
     };
 }]);

@@ -1,18 +1,52 @@
 <div class="content">
-  <h2>{{ user.username }}</h2>
-  Joined on {{ user.createdAt | date : 'shortDate' }}
-  <br>{{ user.role }}
+
+  <div class="header" id="special">
+    {{ user.username }}
+  </div>
+
+  <div class="main-details">
+    <div class="title">Joined</div>
+    <div class="date">
+      {{ user.createdAt | date : 'shortDate' }}
+    </div>
+  </div>
+
+  <div class="main-details">
+    <div class="title">Role</div>
+    <div class="date">
+      {{ user.role }}
+    </div>
+  </div>
+
 </div>
 
 <div class="content">  
-  <h3>Messages</h3>
-  <li ng-repeat="message in userMessages">
-    <a ng-href="/messages/by-topic/{{message.topic_id}}">{{ message.topic.title }}</a>
-    {{ message.topic.createdAt | date : 'short' }}
-    <br><br>
-    {{ message.createdAt | date : 'short' }}
-    <br><br>
-    {{ message.body }}
-    <br><br>
-  </li>
+  <div class="header">
+    Messages
+  </div>
+
+  <div class="sub-header">
+    <div class="title">Title</div>
+    <div class="date">Date</div>
+    <div class="edit"></div>
+    <div class="author"></div>    
+  </div>
+
+  <div class="details" ng-repeat="message in userMessages">
+    <div class="main-details">
+      <div class="title">
+        <a ng-href="/messages/by-topic/{{message.topic.id}}">
+          {{ message.topic.title }}
+        </a>      
+      </div>
+      <div class="date">
+        {{ message.createdAt | date : 'short' }}
+      </div>   
+      <div class="edit"></div>
+      <div class="author"></div>
+    </div>
+    <div class="message-body">
+      {{ message.body }}  
+    </div>
+  </div>
 </div>

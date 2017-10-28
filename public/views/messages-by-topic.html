@@ -1,18 +1,58 @@
-
 <div class="content">
-  <h1>{{ topic.title }}</h1>
-  {{ topic.createdAt | date : 'shortDate' }}
-  <br><br> <a ng-href="/users/{{ topic.createdBy }}">{{ topic.createdBy }}</a>
-  <br><br>
-  <div>  
-    <li ng-repeat="message in messages">
-      {{ message.body }}
-      by: <a ng-href="/users/{{ message.user.username }}">{{ message.user.username }}</a>
-    </li>
+  <div class="header">
+    {{ topic.title }}
   </div>
 
-  <h2>Write your message here</h2>
-  <textarea ng-model="newMessage.body" placeholder="Input text here"></textarea>
-  <br>
-  <button ng-click="createMessage()">Post Message</button>  
+  <div class="sub-header">
+    <div class="author">Created By</div>    
+    <div class="date">Date</div>
+  </div>
+
+  <div class="main-details">
+    <div class="author">
+      <a ng-href="/users/{{ topic.createdBy }}">{{ topic.createdBy }}</a>
+    </div>
+    <div class="date">
+      {{ topic.createdAt | date : 'shortDate' }}
+    </div>
+  </div>
+
+  <div class="header">
+    Messages
+  </div>
+
+  <div class="sub-header">
+    <div class="author">Created By</div>    
+    <div class="date">Date</div>
+  </div>
+
+
+  <div ng-repeat="message in messages">
+  
+    <div class="main-details">
+      <div class="author">
+        <a ng-href="/users/{{ message.user.username }}">{{ message.user.username }}</a>
+      </div>
+      <div class="date">
+        {{ message.createdAt | date : 'short' }}
+      </div>
+    </div>
+
+    <div class="message-body">
+      {{ message.body }}
+    </div>
+
+  </div>
+
+</div>
+
+<div class="content">
+  <div class="header">
+   New Message
+  </div>
+
+  <div class="main-details">
+    <textarea ng-model="newMessage.body" placeholder="Write your message here"></textarea>
+    <button ng-click="createMessage()">Post Message</button>
+  </div>
 </div>

@@ -72,54 +72,70 @@ div {
   border: 1px solid black;
 
 }
-  .header {
-    background-color: $secondary-color;
+
+.header {
+  background-color: $secondary-color;
+  padding: 5px;
+  font-size: 25px;
+  font-weight: bold;
+
+}
+
+#special {
+  font-size: 40px;
+}
+
+.sub-header {
+  @include flex-settings(row nowrap, flex-start);
+  @include paddding-control(5px, 0px, 5px, 5px);
+  border-top: 1px solid black;
+  font-size: 20px;
+}
+
+.main-details, {
+  @include flex-settings(row wrap, flex-start);
+  @include paddding-control(5px, 0px, 5px, 5px);
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+
+  input {
+    width: 250px;
+    height: 20px;
+    font-size: 15px;
     padding: 5px;
-    font-size: 25px;
-    font-weight: bold;
   }
 
-  .sub-header {
-    @include flex-settings(row nowrap, flex-start);
-    @include paddding-control(5px, 0px, 5px, 5px);
-    border-top: 1px solid black;
-    font-size: 20px;
+  textarea {
+    width: 90%;
+    height: 50px;
+    font-size: 15px;
+    padding: 5px;
   }
+}
 
-  .main-details, {
-    @include flex-settings(row wrap, flex-start);
-    @include paddding-control(5px, 0px, 5px, 5px);
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
+.wrapper {
+  width: 50%;
+  margin: 0 auto;
+  border: 1px solid black;
+}
 
-    input {
-      width: 250px;
-    }
-  }
+.title {
+  width: 40%
+}
 
-  .wrapper {
-    width: 50%;
-    margin: 0 auto;
-    border: 1px solid black;
-  }
+.edit {
+  width: 10%;
+}
 
-  .title {
-    width: 40%
-  }
+.author, .date {
+  width: 25%;
+}
 
-  .edit {
-    width: 10%;
-  }
+.message-body {
+  width: inherit;
+  padding: 10px;
+}
 
-  .author, .date {
-    width: 25%;
-  }
-
-  .message-body {
-    width: inherit;
-    padding: 10px;
-  }
-
-  .username, .createdAt {
-    width: 50%;
-  }
+.username, .createdAt, .role {
+  width: 50%;
+}

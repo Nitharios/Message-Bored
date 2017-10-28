@@ -1,7 +1,8 @@
-<h1>List of Users</h1>
-
-<div>  
-  <li ng-repeat="user in users">
-    <a ng-href="/users/{{ user.username }}">{{ user.username }}</a>
-  </li>
+<div class="content">
+  <h1>List of Users</h1>
+  <div>  
+    <li ng-repeat="user in users">
+      <a ng-href="/users/{{ user.username }}">{{ user.username }}</a>
+    </li>
+  </div>
 </div>

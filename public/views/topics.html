@@ -1,18 +1,40 @@
-<h1>List of Topics</h1>
+<div class="content" ng-controller="DisplayController" ng-if="!isUserLoggedIn()">
 
-<div>  
-  <li ng-repeat="topic in topics">
-    <a ng-href="/messages/by-topic/{{ topic.id }}">{{ topic.title }}</a>
-    {{ topic.createdAt | date : 'short' }}
-    by: <a ng-href="users/{{ topic.user.username }}">{{ topic.user.username }}</a>
-    <!-- if topic.created_by === user.id show element -->
-    <a ng-href="/topics/{{ topic.id }}" ng-if="created(topic.created_by)">EDIT</a>
-  </li>
+  <div class="header">Create New Topic</div>
+
+  <div class="details">
+    <form>
+      <input type="text" ng-model="newTopic.title" placeholder="Enter Title">
+      <button ng-click="createTopic()">Create Title</button>
+    </form>    
+  </div>
+
 </div>
 
-<h2>Create New Topic</h2>
-<form>
-  <!-- need to add user_id to created_by -->
-  <input type="text" ng-model="newTopic.title" placeholder="Enter Title"> by: <input type="text" ng-model="newTopic.created_by" disabled>
-  <button ng-click="createTopic()">Create Title</button>
-</form>
+<div class="content">  
+
+  <div class="header">Topics</div>
+
+  <div class="sub-header">
+    <div class="title">Title</div>
+    <div class="edit"></div>
+    <div class="author">Created By</div>    
+    <div class="date">Date</div>
+  </div>
+
+  <div class="details" ng-repeat="topic in topics">
+    <div class="title">
+      <a ng-href="/messages/by-topic/{{ topic.id }}">{{ topic.title }}</a>        
+    </div>
+    <div class="edit">
+      <a ng-href="/topics/{{ topic.id }}" ng-if="created(topic.created_by)">EDIT</a>
+    </div>
+    <div class="author">
+      <a ng-href="users/{{ topic.user.username }}">{{ topic.user.username }}</a>
+    </div>
+    <div class="date">
+      {{ topic.createdAt | date : 'short' }}
+    </div>
+  </div>    
+
+</div>

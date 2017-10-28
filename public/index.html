@@ -5,24 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Welcome to Dash!</title>
-  <link rel="stylesheet" href="./css/styles.css">
+  <link rel="stylesheet" href="/css/styles.css">
   <base href="/">
 </head>
 <body ng-app="boredApp">  
 
-  <div ng-controller="NavBarController">
-    <a ng-href="/">Home</a>
-    <span ng-if="!isUserLoggedIn()">
-      <a ng-href="/dash/login">Login</a>
-      <a ng-href="/dash/register">Register</a>
-    </span>
-    <a ng-href="/dash/logout" ng-if="isUserLoggedIn()">Logout</a>
-    <a ng-href="/users">Users</a>  
-    <a ng-href="/topics">Topics</a> 
-    <a ng-href="/messages/latest">Messages</a> 
+  <div id="navbar">
+    <div class="nav-contents">
+      <span>
+        <a ng-href="/">Home</a>
+        <a ng-href="/topics">Topics</a> 
+        <a ng-href="/messages/latest">Messages</a>     
+      </span>
+    </div>
+    <div class="nav-contents" ng-controller="DisplayController">
+      <span ng-if="!isUserLoggedIn()">
+        <a ng-href="/dash/login">Login</a>
+        <a ng-href="/dash/register">Register</a>
+      </span>
+      <span ng-if="isUserLoggedIn()">
+        <a ng-href="/users">Users</a>  
+        <a ng-href="/dash/logout">Logout</a>          
+      </span>
+    </div>  
   </div>
 
-  <div ng-view></div>
+  <div id="main" ng-view></div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js" type="text/javascript"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.min.js" type="text/javascript"></script>

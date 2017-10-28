@@ -1,5 +1,5 @@
 angular.module('boredApp')
-.controller('LogoutController', ['$scope', 'DashService', function($scope, DashService) {
+.controller('LogoutController', ['$scope', '$window', 'DashService', function($scope, $window, DashService) {
   
   $scope.DashService = DashService;
 

@@ -1,3 +1,98 @@
+// theme colors
+$bg-color: #FFFFFF;
+$primary-color: #FFFFFF;
+$secondary-color: #6699CC;
+$accent-color: #FFFFFF;
+
+//breakpoints
+$sm-size: 400px;
+$sm-med: 600px;
+$med-lg: 960px;
+$lg-size: 1080px;
+
+@mixin flex-settings($flow, $justify) {
+  display: flex;
+  flex-flow: $flow;
+  justify-content: $justify;
+}
+
+@mixin paddding-control($top, $right, $bottom, $left) {
+  padding: $top $right $bottom $left;
+}
+
+@mixin width-height($width, $height) {
+  width: $width;
+  height: $height;
+}
+
 body {
-  background-color: #FFFFFF;
+  background-color: $bg-color;
+  font-family: sans-serif;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+div {
+  // border: 1px solid black;
+}
+
+#navbar {
+  @include flex-settings(row nowrap, space-around);
+  width: 100%;
+  position: fixed;
+
+  span {
+    @include flex-settings(row nowrap, space-around);
+
+    a {
+      margin: 10px;
+      font-size: 15px;
+    }
+  }
+}
+
+#main {
+  @include flex-settings(row wrap, space-around);
+  padding-top: 50px;
+  width: 100%;
+}
+
+.content {
+  margin: 0 auto;
+  width: 100%;
+  border: 1px solid black;
+
+  .header {
+    background-color: $secondary-color;
+    padding: 5px;
+    font-size: 25px;
+    font-weight: bold;
+  }
+
+  .sub-header {
+    @include flex-settings(row nowrap, flex-start);
+    @include paddding-control(5px, 0px, 5px, 5px);
+    border: 1px solid black;
+    font-size: 20px;
+  }
+
+  .details {
+    @include flex-settings(row nowrap, flex-start);
+    @include paddding-control(5px, 0px, 5px, 5px);
+    border-top: 1px solid black;
+  }
+
+  .title {
+    width: 40%
+  }
+
+  .edit {
+    width: 10%;
+  }
+
+  .author, .date {
+    width: 25%;
+  }
 }

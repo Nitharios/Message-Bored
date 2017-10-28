@@ -1,10 +1,11 @@
-<br><br>
-<h2>{{ currentTopic.title }}</h2>
+<div class="content">
+  <h2>{{ currentTopic.title }}</h2>
 
-{{ message.body }}
-<br><br>
-<input type="text" ng-model="updatedTopic.title">
-<button ng-click="updateTopicById()">Update</button>
+  {{ message.body }}
+  <br><br>
+  <input type="text" ng-model="updatedTopic.title">
+  <button ng-click="updateTopicById()">Update</button>  
+</div>
 
 <!-- <br><br>
 <button ng-click="deleteTopic()">DELETE</button> -->

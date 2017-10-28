@@ -1,2 +1,55 @@
 body {
-  background-color: #FFFFFF; }
+  background-color: #FFFFFF;
+  font-family: sans-serif; }
+  body a {
+    text-decoration: none; }
+
+#navbar {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  width: 100%;
+  position: fixed; }
+  #navbar span {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around; }
+    #navbar span a {
+      margin: 10px;
+      font-size: 15px; }
+
+#main {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  padding-top: 50px;
+  width: 100%; }
+
+.content {
+  margin: 0 auto;
+  width: 100%;
+  border: 1px solid black; }
+  .content .header {
+    background-color: #6699CC;
+    padding: 5px;
+    font-size: 25px;
+    font-weight: bold; }
+  .content .sub-header {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    padding: 5px 0px 5px 5px;
+    border: 1px solid black;
+    font-size: 20px; }
+  .content .details {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    padding: 5px 0px 5px 5px;
+    border-top: 1px solid black; }
+  .content .title {
+    width: 40%; }
+  .content .edit {
+    width: 10%; }
+  .content .author, .content .date {
+    width: 25%; }

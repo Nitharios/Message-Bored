@@ -4,6 +4,7 @@ angular.module('boredApp')
     var postNew = '/api/messages';
     var messagesByTopic = '/api/messages/by-topic';
     var messagesByUser = '/api/messages/by-user';
+    var editMessage = '/api/messages';
 
     // read methods
     this.getMessages = function(topic_id) {
@@ -32,6 +33,13 @@ angular.module('boredApp')
     this.createMessage = function(newMessage) {
       // create on backend
       return $http.post(postNew, newMessage)
+      .then(function(response) {
+        return response.data;
+      });
+    };
+
+    this.deleteMessage = function(message_id) {
+      return $http.delete(editMessage + '/' + message_id)
       .then(function(response) {
         return response.data;
       });

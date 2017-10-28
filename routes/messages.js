@@ -42,6 +42,21 @@ router.route('/latest')
   });
 });
 
+router.route('/:id')
+.delete((req, res) => {
+  const id = req.params.id;
+
+  return Message.destroy({
+    where : { id : id }
+  })
+  .then(response => {
+    return res.json(success);
+  })
+  .catch(err => {
+    return res.json(failure);
+  });
+});
+
 router.route('/by-topic/:id')
 .get((req, res) => {
   const id = req.params.id;

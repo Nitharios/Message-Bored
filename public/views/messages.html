@@ -6,5 +6,8 @@
     {{ message.topic.title }}
     {{ message.createdAt | date : 'short' }}
     <p>{{ message.body }}</p>
+    <span ng-if="created(message.author_id)">
+      <button ng-click="deleteMessage(message.id)" value="DELETE">DELETE</button>      
+    </span>
   </li>
 </div>

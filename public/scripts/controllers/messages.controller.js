@@ -1,5 +1,5 @@
 angular.module('boredApp')
-.controller('MessagesController', ['$scope', '$routeParams', 'MessagesService', function($scope, $routeParams, MessagesService) {
+.controller('MessagesController', ['$scope', '$window', '$routeParams', 'MessagesService', function($scope, $window, $routeParams, MessagesService) {
   $scope.MessagesService = MessagesService;
 
   $scope.messages = [];
@@ -8,4 +8,17 @@ angular.module('boredApp')
   .then(function(messagesList) {
     $scope.messages = messagesList;
   });
+
+  $scope.deleteMessage = function(message_id) {
+    MessagesService.deleteMessage(message_id)
+    .then(function(response) {
+      if (response.success) {
+        $window.location.reload();
+      }
+    });
+  };
+
+  $scope.created = function(author_id) {
+    return Number(author_id) === Number($window.localStorage.id);
+  };
 }]);

@@ -1,6 +1,7 @@
 angular.module('boredApp')
-.controller('TopicsController', ['$scope', '$window','TopicsService', function($scope, $window, TopicsService) {
+.controller('TopicsController', ['$scope', '$window', 'UsersService', 'TopicsService', function($scope, $window, UsersService, TopicsService) {
 
+  $scope.UsersService = UsersService;
   $scope.TopicsService = TopicsService;
   $scope.topics = [];
   $scope.newTopic = { 
@@ -36,5 +37,9 @@ angular.module('boredApp')
         $window.location.reload();
       }
     });
+  };
+
+  $scope.created = function(id) {
+    return Number(id) === Number($window.localStorage.id);
   };
 }]);

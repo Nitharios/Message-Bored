@@ -1,15 +1,16 @@
 angular.module('boredApp')
 .controller('RegistrationController', ['$scope', '$location', 'DashService', 'UsersService', function($scope, $location, DashService, UsersService) {
+  
   $scope.DashService = DashService;
   $scope.UsersService = UsersService;
-
-  var failure = { success : false };
 
   $scope.users = [];
   $scope.newUser = {
     username : '',
     password : ''
   };
+  
+  var failure = { success : false };
 
   UsersService.getUsers()
   .then(function(usersList) {
@@ -32,7 +33,6 @@ angular.module('boredApp')
       username : $scope.newUser.username,
       password : $scope.newUser.password
     };
-
 
     DashService.createUser(newUser)
     .then(function(response) {

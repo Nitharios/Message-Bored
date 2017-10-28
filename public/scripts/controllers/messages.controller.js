@@ -1,7 +1,8 @@
 angular.module('boredApp')
 .controller('MessagesController', ['$scope', '$window', '$routeParams', 'MessagesService', function($scope, $window, $routeParams, MessagesService) {
+  
   $scope.MessagesService = MessagesService;
-
+  
   $scope.messages = [];
   // on load loads all messages returned by MessagesService
   MessagesService.getMessages($routeParams.id)

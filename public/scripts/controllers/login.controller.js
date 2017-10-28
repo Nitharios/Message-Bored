@@ -2,7 +2,6 @@ angular.module('boredApp')
 .controller('LoginController', ['$scope', '$location', 'DashService', function($scope, $location, DashService) {
 
   $scope.DashService = DashService;
-
   $scope.userDetails = {
     username : '',
     password : ''

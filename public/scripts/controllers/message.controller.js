@@ -1,14 +1,15 @@
 angular.module('boredApp')
 .controller('NewMessageController', ['$scope', '$window', '$routeParams', 'TopicsService', 'MessagesService', function($scope, $window, $routeParams, TopicsService, MessagesService) {
+
   $scope.TopicsService = TopicsService;
   $scope.MessagesService = MessagesService;
-
+  
+  $scope.messages = [];
   $scope.topic = { 
     title : '',
     createdAt : '',
     createdBy : ''
   };
-  $scope.messages = [];
   $scope.newMessage = { 
     body : '',
     topic_id : $routeParams.id

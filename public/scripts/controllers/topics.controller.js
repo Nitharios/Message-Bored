@@ -3,6 +3,7 @@ angular.module('boredApp')
 
   $scope.UsersService = UsersService;
   $scope.TopicsService = TopicsService;
+  
   $scope.topics = [];
   $scope.newTopic = { 
     title : '',

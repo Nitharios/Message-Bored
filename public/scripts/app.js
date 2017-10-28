@@ -6,7 +6,8 @@ var boredApp = angular.module('boredApp')
 
   $routeProvider
   .when('/', {
-    templateUrl : '/views/home.html'
+    templateUrl : '/views/home.html',
+    controller : 'NavBarController'
   })
   .when('/dash/register', {
     templateUrl : '/views/registration.html',

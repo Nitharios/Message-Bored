@@ -26,6 +26,7 @@ $lg-size: 1080px;
 }
 
 body {
+  margin: 0;
   background-color: $bg-color;
   font-family: sans-serif;
 
@@ -42,6 +43,7 @@ div {
   @include flex-settings(row nowrap, space-around);
   width: 100%;
   position: fixed;
+  padding-top: 5px;
 
   span {
     @include flex-settings(row nowrap, space-around);
@@ -53,17 +55,23 @@ div {
   }
 }
 
-#main {
-  @include flex-settings(row wrap, space-around);
+#page-wrapper {
   padding-top: 50px;
   width: 100%;
 }
 
-.content {
+#main {
+  @include flex-settings(row wrap, space-around);
+  max-width: 95%;
   margin: 0 auto;
+}
+
+.content {
   width: 100%;
+  margin: 0 auto;
   border: 1px solid black;
 
+}
   .header {
     background-color: $secondary-color;
     padding: 5px;
@@ -74,14 +82,25 @@ div {
   .sub-header {
     @include flex-settings(row nowrap, flex-start);
     @include paddding-control(5px, 0px, 5px, 5px);
-    border: 1px solid black;
+    border-top: 1px solid black;
     font-size: 20px;
   }
 
-  .details {
-    @include flex-settings(row nowrap, flex-start);
+  .main-details, {
+    @include flex-settings(row wrap, flex-start);
     @include paddding-control(5px, 0px, 5px, 5px);
     border-top: 1px solid black;
+    border-bottom: 1px solid black;
+
+    input {
+      width: 250px;
+    }
+  }
+
+  .wrapper {
+    width: 50%;
+    margin: 0 auto;
+    border: 1px solid black;
   }
 
   .title {
@@ -95,4 +114,12 @@ div {
   .author, .date {
     width: 25%;
   }
-}
+
+  .message-body {
+    width: inherit;
+    padding: 10px;
+  }
+
+  .username, .createdAt {
+    width: 50%;
+  }

@@ -1,17 +1,38 @@
-
 <div class="content">  
-  <h1>Hello from Messages!</h1>
-  <li ng-repeat="message in messages">
-    <a ng-href="/users/{{ message.user.username }}">
-      {{ message.user.username }}
-    </a>
-    <a ng-href="/messages/by-topic/{{message.topic.id}}">
-      {{ message.topic.title }}
-    </a>
-    {{ message.createdAt | date : 'short' }}
-    <p>{{ message.body }}</p>
-    <span ng-if="created(message.author_id)">
+
+  <div class="header">Latest Messages</div>
+
+  <div class="sub-header">
+    <div class="title">Title</div>
+    <div class="edit"></div>
+    <div class="author">Created By</div>    
+    <div class="date">Date</div>
+  </div>
+
+  <div class="details" ng-repeat="message in messages">
+    <div class="main-details">
+      <div class="title">
+        <a ng-href="/messages/by-topic/{{message.topic.id}}">
+          {{ message.topic.title }}
+        </a>      
+      </div>
+      <div class="edit"></div>
+      <div class="author">
+        <a ng-href="/users/{{ message.user.username }}">
+          {{ message.user.username }}
+        </a>      
+      </div>
+      <div class="date">
+        {{ message.createdAt | date : 'short' }}
+      </div>   
+    </div>
+    <div class="message-body">
+      {{ message.body }}  
+    </div>
+  </div>
+
+<!--     <span ng-if="created(message.author_id)">
       <button ng-click="deleteMessage(message.id)" value="DELETE">DELETE</button>      
     </span>
-  </li>
+ -->
 </div>

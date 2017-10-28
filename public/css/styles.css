@@ -1,4 +1,5 @@
 body {
+  margin: 0;
   background-color: #FFFFFF;
   font-family: sans-serif; }
   body a {
@@ -9,7 +10,8 @@ body {
   flex-flow: row nowrap;
   justify-content: space-around;
   width: 100%;
-  position: fixed; }
+  position: fixed;
+  padding-top: 5px; }
   #navbar span {
     display: flex;
     flex-flow: row nowrap;
@@ -18,38 +20,63 @@ body {
       margin: 10px;
       font-size: 15px; }
 
+#page-wrapper {
+  padding-top: 50px;
+  width: 100%; }
+
 #main {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
-  padding-top: 50px;
-  width: 100%; }
+  max-width: 95%;
+  margin: 0 auto; }
 
 .content {
-  margin: 0 auto;
   width: 100%;
+  margin: 0 auto;
   border: 1px solid black; }
-  .content .header {
-    background-color: #6699CC;
-    padding: 5px;
-    font-size: 25px;
-    font-weight: bold; }
-  .content .sub-header {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: flex-start;
-    padding: 5px 0px 5px 5px;
-    border: 1px solid black;
-    font-size: 20px; }
-  .content .details {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: flex-start;
-    padding: 5px 0px 5px 5px;
-    border-top: 1px solid black; }
-  .content .title {
-    width: 40%; }
-  .content .edit {
-    width: 10%; }
-  .content .author, .content .date {
-    width: 25%; }
+
+.header {
+  background-color: #6699CC;
+  padding: 5px;
+  font-size: 25px;
+  font-weight: bold; }
+
+.sub-header {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  padding: 5px 0px 5px 5px;
+  border-top: 1px solid black;
+  font-size: 20px; }
+
+.main-details {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  padding: 5px 0px 5px 5px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black; }
+  .main-details input {
+    width: 250px; }
+
+.wrapper {
+  width: 50%;
+  margin: 0 auto;
+  border: 1px solid black; }
+
+.title {
+  width: 40%; }
+
+.edit {
+  width: 10%; }
+
+.author, .date {
+  width: 25%; }
+
+.message-body {
+  width: inherit;
+  padding: 10px; }
+
+.username, .createdAt {
+  width: 50%; }

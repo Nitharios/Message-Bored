@@ -1,8 +1,21 @@
-<div class="content">
-  <h1>List of Users</h1>
-  <div>  
-    <li ng-repeat="user in users">
-      <a ng-href="/users/{{ user.username }}">{{ user.username }}</a>
-    </li>
+<div class="wrapper">
+
+  <div class="header">Users</div>
+
+  <div class="sub-header">
+    <div class="username">Username</div>
+    <div class="createdAt">Joined</div>
   </div>
+
+  <div class="details" ng-repeat="user in users">
+    <div class="main-details">
+      <div class="username">
+        <a ng-href="/users/{{ user.username }}">{{ user.username }}</a>
+      </div>
+      <div class="createdAt">
+        {{ user.createdAt | date: 'shortDate' }}
+      </div>      
+    </div>
+  </div>    
+
 </div>

@@ -46,13 +46,18 @@
 
 </div>
 
-<div class="content">
+<div class="content" ng-if="isUserLoggedIn()">
   <div class="header">
    New Message
   </div>
 
   <div class="main-details">
-    <textarea ng-model="newMessage.body" placeholder="Write your message here"></textarea>
-    <button ng-click="createMessage()">Post Message</button>
+    <div class="new">
+      <textarea ng-model="newMessage.body" placeholder="Write your message here"></textarea>
+      <div>
+        <button ng-click="createMessage()">Post</button>
+        <button ng-click="newMessage.body=''">Clear</button>
+      </div>      
+    </div>
   </div>
 </div>

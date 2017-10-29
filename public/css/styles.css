@@ -1,3 +1,13 @@
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit; }
+
 body {
   margin: 0;
   background-color: #FFFFFF;
@@ -6,25 +16,41 @@ body {
     text-decoration: none; }
 
 #navbar {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-around;
+  background-color: #6699CC;
   width: 100%;
   position: fixed;
   padding-top: 5px; }
   #navbar span {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-around; }
     #navbar span a {
       margin: 10px;
+      color: #FFFFFF;
       font-size: 15px; }
 
 #page-wrapper {
-  padding-top: 50px;
-  width: 100%; }
+  padding-top: 50px; }
 
 #main {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
@@ -46,6 +72,11 @@ body {
   font-size: 40px; }
 
 .sub-header {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
   display: flex;
   flex-flow: row nowrap;
   justify-content: flex-start;
@@ -53,7 +84,15 @@ body {
   border-top: 1px solid black;
   font-size: 20px; }
 
+.special {
+  background-color: #6699CC; }
+
 .main-details {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
@@ -62,14 +101,21 @@ body {
   border-bottom: 1px solid black; }
   .main-details input {
     width: 250px;
-    height: 20px;
+    height: 25px;
     font-size: 15px;
+    margin-right: 5px;
     padding: 5px; }
-  .main-details textarea {
-    width: 90%;
-    height: 50px;
-    font-size: 15px;
-    padding: 5px; }
+  .main-details .new {
+    width: 100%; }
+    .main-details .new textarea {
+      min-width: 90%;
+      max-width: 97%;
+      height: 75px;
+      margin: 0 auto;
+      font-size: 15px;
+      padding: 5px; }
+    .main-details .new button {
+      font-size: 20px; }
 
 .wrapper {
   width: 50%;

@@ -1,10 +1,16 @@
 <div class="content">
-  <h2>{{ currentTopic.title }}</h2>
+  
+  <div class="header">
+    Edit Topic
+  </div>
+  <div class="sub-header">
+    {{ currentTopic.title }}
+  </div>
 
-  {{ message.body }}
-  <br><br>
-  <input type="text" ng-model="updatedTopic.title">
-  <button ng-click="updateTopicById()">Update</button>  
+  <div class="main-details">
+    <input type="text" ng-model="updatedTopic.title">
+    <button ng-click="updateTopicById()">Change Title</button>    
+  </div>
 </div>
 
 <!-- <br><br>

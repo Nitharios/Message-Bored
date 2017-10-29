@@ -1,6 +1,7 @@
 angular.module('boredApp')
-.controller('NewMessageController', ['$scope', '$window', '$routeParams', 'TopicsService', 'MessagesService', function($scope, $window, $routeParams, TopicsService, MessagesService) {
+.controller('NewMessageController', ['$scope', '$window', '$routeParams', 'DashService', 'TopicsService', 'MessagesService', function($scope, $window, $routeParams, DashService, TopicsService, MessagesService) {
 
+  $scope.DashService = DashService;
   $scope.TopicsService = TopicsService;
   $scope.MessagesService = MessagesService;
   
@@ -44,5 +45,9 @@ angular.module('boredApp')
         $window.location.reload();
       }
     });
-  };  
+  };
+
+  $scope.isUserLoggedIn = function() {
+    return DashService.isUserLoggedIn();
+  };
 }]);

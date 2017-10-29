@@ -22,4 +22,5 @@ angular.module('boredApp')
   $scope.created = function(author_id) {
     return Number(author_id) === Number($window.localStorage.id);
   };
+  
 }]);

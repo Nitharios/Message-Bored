@@ -1,7 +1,7 @@
 // theme colors
 $bg-color: #FFFFFF;
-$primary-color: #FFFFFF;
-$secondary-color: #6699CC;
+$primary-color: #6699CC;
+$secondary-color: #FFFFFF;
 $accent-color: #FFFFFF;
 
 //breakpoints
@@ -11,6 +11,11 @@ $med-lg: 960px;
 $lg-size: 1080px;
 
 @mixin flex-settings($flow, $justify) {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
   display: flex;
   flex-flow: $flow;
   justify-content: $justify;
@@ -23,6 +28,20 @@ $lg-size: 1080px;
 @mixin width-height($width, $height) {
   width: $width;
   height: $height;
+}
+
+@mixin box-style($style) {
+  -webkit-box-sizing: $style;
+  -moz-box-sizing: $style;
+  box-sizing: $style; 
+}
+
+html {
+  @include box-style(border-box); 
+}
+
+*, *:before, *:after {
+  @include box-style(inherit)
 }
 
 body {
@@ -41,6 +60,7 @@ div {
 
 #navbar {
   @include flex-settings(row nowrap, space-around);
+  background-color: $primary-color;
   width: 100%;
   position: fixed;
   padding-top: 5px;
@@ -50,6 +70,7 @@ div {
 
     a {
       margin: 10px;
+      color: $secondary-color;
       font-size: 15px;
     }
   }
@@ -57,7 +78,6 @@ div {
 
 #page-wrapper {
   padding-top: 50px;
-  width: 100%;
 }
 
 #main {
@@ -74,7 +94,7 @@ div {
 }
 
 .header {
-  background-color: $secondary-color;
+  background-color: $primary-color;
   padding: 5px;
   font-size: 25px;
   font-weight: bold;
@@ -92,24 +112,40 @@ div {
   font-size: 20px;
 }
 
-.main-details, {
+.special {
+  background-color: $primary-color;
+}
+
+.main-details {
   @include flex-settings(row wrap, flex-start);
   @include paddding-control(5px, 0px, 5px, 5px);
   border-top: 1px solid black;
   border-bottom: 1px solid black;
 
+
   input {
     width: 250px;
-    height: 20px;
+    height: 25px;
     font-size: 15px;
+    margin-right: 5px;
     padding: 5px;
   }
 
-  textarea {
-    width: 90%;
-    height: 50px;
-    font-size: 15px;
-    padding: 5px;
+  .new {
+    width: 100%;
+  
+    textarea {
+      min-width: 90%;
+      max-width: 97%;
+      height: 75px;
+      margin: 0 auto;
+      font-size: 15px;
+      padding: 5px;
+    }
+
+    button {
+      font-size: 20px;
+    }
   }
 }
 

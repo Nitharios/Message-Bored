@@ -1,6 +1,7 @@
 angular.module('boredApp')
-.controller('TopicsController', ['$scope', '$window', 'UsersService', 'TopicsService', function($scope, $window, UsersService, TopicsService) {
+.controller('TopicsController', ['$scope', '$window', 'DashService', 'UsersService', 'TopicsService', function($scope, $window, DashService, UsersService, TopicsService) {
 
+  $scope.DashService = DashService;
   $scope.UsersService = UsersService;
   $scope.TopicsService = TopicsService;
   
@@ -43,4 +44,9 @@ angular.module('boredApp')
   $scope.created = function(id) {
     return Number(id) === Number($window.localStorage.id);
   };
+
+  $scope.isUserLoggedIn = function() {
+    return DashService.isUserLoggedIn();
+  };
+  
 }]);

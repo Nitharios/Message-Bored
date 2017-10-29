@@ -48,4 +48,8 @@ angular.module('boredApp')
   this.clearUser = function() {
     localStorage.clear();
   };
+
+  this.isUserLoggedIn = function() {
+    return localStorage.getItem('isLoggedIn') === 'true';
+  };
 }]);

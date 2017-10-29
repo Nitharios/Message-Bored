@@ -42,10 +42,11 @@ body {
       color: #FFFFFF;
       font-size: 15px; }
 
-#page-wrapper {
-  padding-top: 50px; }
+#page-header {
+  text-align: center;
+  font-size: 75px; }
 
-#main {
+#page-wrapper {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -54,6 +55,7 @@ body {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
+  padding-top: 50px;
   max-width: 95%;
   margin: 0 auto; }
 
@@ -137,3 +139,28 @@ body {
 
 .username, .createdAt, .role {
   width: 50%; }
+
+.user-auth {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  width: 300px;
+  border: 1px solid black; }
+  .user-auth div {
+    width: 100%;
+    text-align: center; }
+  .user-auth .login-details {
+    margin: 15px auto; }
+    .user-auth .login-details input {
+      width: 75%;
+      height: 25px;
+      font-size: 20px; }
+
+/* SPECIAL CLASSES */
+.text-center {
+  text-align: center; }

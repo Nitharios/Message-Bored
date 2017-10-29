@@ -101,6 +101,8 @@ body {
   padding: 5px 0px 5px 5px;
   border-top: 1px solid black;
   border-bottom: 1px solid black; }
+  .main-details div {
+    padding: 5px; }
   .main-details input {
     width: 250px;
     height: 25px;
